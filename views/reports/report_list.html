@@ -1,0 +1,175 @@
+<section class="content" ng-cloak>
+    <div class="container-fluid" style="overflow-y: hidden;">
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Reports</h4>
+            </div>
+            <div class="col-md-6" style="margin-top:1%;">
+                <button type="button" data-toggle="collapse" data-target="#filterBox" class="btn btn-primary btn-circle btn-sm pull-right" title="Filter" style="outline: 0;margin-right:5px"><i class="fa fa-filter" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="row collapse" id="filterBox">
+            <div class="col-md-12">
+                <div class="box box-primary paddingLeft0">
+                    <div class="box-header with-border paddingLeft0 marginBorderHead">
+                        <div class="formHeadDiv">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h1 class="formheading paddingLeft0">
+                                        Filter
+                                    </h1>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <form id="filterDataForm" name="filterDataForm">
+                        <div class="box-body marginEmailBody">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class=""> Date</label>
+                                        <div>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i  class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control" id="filterDate" name="filterDate" ng-model="rpc.filterDate"  placeholder="Enter date" style="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="">Product ID</label>
+                                        <div>
+                                            <div class="input-group" style="width:100%;">
+                                                <select id="filterProductId" ng-model="rpc.filterProductId" name="filterProductId" class="form-control s2mn" style="width:100%;"  >
+                                                    <option value="">Select Product</option>
+                                                     <option value="{{product}}" ng-repeat="product in rpc.productList">{{product}}</option>
+                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" >
+                                  <div class="form-group">
+                                      <label class="" style="visibility: hidden;">Find</label>
+                                      <div>
+                                          <div class="input-group" style="width:100%;">
+                                            <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.getReportList();" style="outline: 0;" ><i class="fa fa-search" aria-hidden="true"></i> &nbsp; Find
+                                            </button>
+
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /.box-body -->
+
+
+                </div>
+            </div>
+        </div>
+        <!-- Filter section ends here -->
+        <br>
+        <!-- fund  inward log table  -->
+        <div>
+
+          <div class="box-header with-border paddingLeft0 marginBorderHead" style="    background: white;">
+                  <div class="formHeadDiv">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <h1 class="formheading paddingLeft0">
+                                  Reports count ({{rpc.reportList.length}})
+                              </h1>
+                          </div>
+
+                          <div class="col-md-6">
+                              <div class="pull-right">
+                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="
+    color: red;
+"></i> PDF
+<button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('CSV');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="
+color: green;
+"></i> Excel
+                                </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+            <table class="table table-condensed table-hover table-responsive">
+
+                <thead class="thead-default">
+                    <tr>
+                        <th style="text-align: center;">Sr No.</th>
+                        <th style="text-align: center;">User</th>
+                        <th style="text-align: center;">Device</th>
+                        <th style="text-align: center;">Product</th>
+                        <th style="text-align: center;">Mode</th>
+                        <th style="text-align: center;">Test Case</th>
+                        <th style="text-align: center;">Test Point 3 V</th>
+                        <th style="text-align: center;">Test Point 3 T</th>
+                        <th style="text-align: center;">Test Point 4 V</th>
+                        <th style="text-align: center;">Test Point 4 T</th>
+                        <th style="text-align: center;">Test Point 4 P L</th>
+                        <th style="text-align: center;">Test Point 4 P H</th>
+                        <th style="text-align: center;">Status</th>
+                        <th style="text-align: center;">Date</th>
+                       <!--  <th>Action</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in rpc.reportList">
+                        <td style="text-align: center;" ng-bind="($index + 1)" ></td>
+                        <td style="text-align: center;" >{{data.username}}</td>
+                        <td style="text-align: center;" >{{data.device_id}}</td>
+                        <td style="text-align: center;" >{{data.product_id}}</td>
+                        <td style="text-align: center;" >{{data.mode}}</td>
+                        <td style="text-align: center;" >{{data.test_case}}</td>
+                        <td style="text-align: center;" >{{data.test_point_3_voltage}}</td>
+                        <td style="text-align: center;" >{{data.test_point_3_time}}</td>
+                        <td style="text-align: center;" >{{data.test_point_4_voltage}}</td>
+                        <td style="text-align: center;" >{{data.test_point_4_time}}</td>
+                        <td style="text-align: center;" >{{data.test_point_4_pulse_low}}</td>
+                        <td style="text-align: center;" >{{data.test_point_4_pulse_high}}</td>
+                        <td style="text-align: center;" >{{data.status}}</td>
+                        <td style="text-align: center;" >{{data.date}}</td>
+                        <!-- <td></td> -->
+                    </tr>
+                    <tr ng-if="rpc.reportList == null || rpc.reportList.length == 0">
+                        <td style="text-align: center;" colspan="14">No Records Found</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row col-sm-12" style="padding-right: 0px;">
+            <ul id="pagination-sec1" class="pagination-sm" style="float: right;margin-top: 5px;margin-bottom: 45px"></ul>
+        </div>
+        </div>
+    </div>
+</section>
+<script>
+            $(document).ready(function () {
+                $("html, body").animate({scrollTop: 0}, "fast");
+            });
+
+            //Date picker
+            $('#filterDate').datepicker({
+                autoclose: true,
+                format:"yyyy-mm-dd",
+                todayHighlight: true
+            });
+
+
+</script>
