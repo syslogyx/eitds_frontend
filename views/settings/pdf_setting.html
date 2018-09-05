@@ -14,9 +14,9 @@
                 <div class="col-md-6">
                     <div class="pull-right" style="margin-top: 5px; margin-right: 30px;">
                         <a ng-href="/setting/pdf_setting_list"><button type="button" class="btn btn-default btn-sm" data-toggle="modal" title="Back" data-target="" data-ng-click="" style="border:white;color:#428bca;outline: 0;"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
-                      
-                    </div> 
-              </div>                
+
+                    </div>
+              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -59,7 +59,7 @@
                             <label class="mandatory" style="text-align:center;">Select columns</label>
                         </div>
                         <div class="col-sm-8">
-                            <select id="display_col" ng-model="set.display_col" name="display_col" class="form-control s2mn select2" style="width:100%;" ng-options="x as x.column_display_name for x in set.colNames" multiple="multiple"></select>
+                            <select id="display_col" ng-model="set.display_col" name="display_col" class="form-control s2mn select2" style="width:100%;" ng-options="x.id as x.column_display_name for x in set.colNames" multiple="multiple"></select>
                         </div>
                     </div>
                 </div>
