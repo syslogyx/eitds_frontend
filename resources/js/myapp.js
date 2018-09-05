@@ -80,6 +80,20 @@ app.constant('RESOURCES', (function () {
     }
 })());
 
+app.directive('ngFiles', ['$parse', function ($parse) {
+
+    function fn_link(scope, element, attrs) {
+        var onChange = $parse(attrs.ngFiles);
+        element.on('change', function (event) {
+            onChange(scope, { $files: event.target.files });
+        });
+    };
+
+    return {
+        link: fn_link
+    }
+} ])
+
 app.service('checkAuthentication', function (RESOURCES, $http, $cookieStore, $filter,services,AclService) {
     this.checkPermission=function(q,permission){
         if(services.getAuthKey() !== undefined){
@@ -290,7 +304,7 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         Utility.startAnimation();
         return $http({
             method: 'POST',
-            url: RESOURCES.SERVER_API + "get/productHistoryByDateAndProductId",
+            url: RESOURCES.SERVER_API + "get/productHistoryByDateAndProductIdNew",
             dataType: 'json',
             data: $.param(request),
             headers: {
@@ -300,9 +314,10 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
     };
     this.download = function (request) {
         var win = window.open(RESOURCES.SERVER_API +'report/download/'+request.user_id+'/'+request.date+'/'+request.product_id+'/'+request.type);
-         win.setTimeout(function(){this.close();},1500)
-  win.focus();
+        win.setTimeout(function(){this.close();},1500)
+        win.focus();
     };
+
     this.getProductList = function (req) {
         Utility.startAnimation();
         return $http({
@@ -315,7 +330,17 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         })
     };
 
-
+    this.getPdfSettingList = function (req) {
+        Utility.startAnimation();
+        return $http({
+            method: 'GET',
+            url: RESOURCES.SERVER_API + "get/pdfSettings",
+            dataType: 'json',
+            headers: {
+                'Content-Type': RESOURCES.CONTENT_TYPE
+            }
+        })
+    };
 });
 
 app.config(function ($routeProvider, $locationProvider) {
@@ -403,6 +428,26 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'views/reports/report_list.html',
                 controller: 'reportCtrl',
                 controllerAs: 'rpc',
+                resolve: {
+                    'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
+
+                    }]
+                }
+            })
+            .when('/setting/pdf_setting', {
+                templateUrl: 'views/settings/pdf_setting.html',
+                controller: 'settingsCtrl',
+                controllerAs: 'set',
+                resolve: {
+                    'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
+
+                    }]
+                }
+            })
+            .when('/setting/pdf_setting_list', {
+                templateUrl: 'views/settings/pdf_setting_list.html',
+                controller: 'settingsCtrl',
+                controllerAs: 'set',
                 resolve: {
                     'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
 

@@ -363,7 +363,8 @@
                                     "menuCtrl",
                                     "userCtrl",
                                     "deviceManagmentCtrl",
-                                    "reportCtrl"
+                                    "reportCtrl",
+                                    "settingsCtrl"
                                   ];
 
             document.write('<script type="text/javascript" src="/resources/js/myapp.js?v='+_c+'"><\/script>');

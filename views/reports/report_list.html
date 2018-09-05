@@ -1,3 +1,12 @@
+<script type="text/javascript" src="/resources/plugins/tableHeadFixer/tableHeadFixer.js"></script>
+
+<style type="text/css">
+    
+            #fixTable {
+                width: 1800px !important;
+            }
+        
+</style>
 <section class="content" ng-cloak>
     <div class="container-fluid" style="overflow-y: hidden;">
         <br>
@@ -22,8 +31,6 @@
                                         Filter
                                     </h1>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -76,40 +83,34 @@
                         </div>
                     </form>
                     <!-- /.box-body -->
-
-
                 </div>
             </div>
         </div>
         <!-- Filter section ends here -->
         <br>
-        <!-- fund  inward log table  -->
+
         <div>
-
-          <div class="box-header with-border paddingLeft0 marginBorderHead" style="    background: white;">
-                  <div class="formHeadDiv">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <h1 class="formheading paddingLeft0">
+            <div class="box-header with-border paddingLeft0 marginBorderHead" style="background: white;">
+                <div class="formHeadDiv">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="formheading paddingLeft0">
                                   Reports count ({{rpc.reportList.length}})
-                              </h1>
-                          </div>
+                            </h1>
+                        </div>
 
-                          <div class="col-md-6">
-                              <div class="pull-right">
-                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="
-    color: red;
-"></i> PDF
-<button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('CSV');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="
-color: green;
-"></i> Excel
+                        <div class="col-md-6">
+                            <div class="pull-right">
+                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF
+                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('CSV');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <table class="table table-condensed table-hover table-responsive">
+
+            <table class="table table-condensed table-hover table-responsive" style="display: none;">
 
                 <thead class="thead-default">
                     <tr>
@@ -153,6 +154,99 @@ color: green;
                     </tr>
                 </tbody>
             </table>
+            
+            <div class="table-responsive" style="width: 100%;height: 400px;overflow: scroll;max-height: none;min-height: 0px;max-width: none;min-width: 0px;" ng-repeat="product_data in rpc.data track by $index">
+
+
+                <table class="table table-condensed table-bordered" id="fixTable">
+
+                    <thead class="thead-default">
+                        <tr>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Case #</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Condition</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Valid for Modes</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Mode</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">Accepted Tolerance</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Output</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Time when Trigger Occurred (TP3_T) (sec)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Time when Trigger Occurred (TP4_T)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP1 (VCC) (TP1_V)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP2 (Int. Firing Pulse)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP3 (Neutralization Pulse) TP3_V</th>
+                            <th colspan="4" style="text-align: center;vertical-align: middle;">TP4 (Firing Pulse)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP5 (3.3V Till 6 Sec)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP6 (Int. Firing Pulse)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP7 (Arming Safety) TP7_V @ 200ms (V)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">(Arming Safety) TP7_V2 @ 1.8 ms (V)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Final Status (OK/NOT OK)</th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">DATE</th>
+                           <!--  <th>Action</th> -->
+                        </tr>
+                        <tr>
+                            <th style="text-align: center;vertical-align: middle;">Time (ms)</th>
+                            <th style="text-align: center;vertical-align: middle;">Voltage (V)</th>
+                            <th style="text-align: center;vertical-align: middle;">No. of Pulses (PC)</th>
+                            <th style="text-align: center;vertical-align: middle;">Pulse Width (ms) TP4_P_H</th>
+                            <th style="text-align: center;vertical-align: middle;">Pulse Gap (ms) TP4_P_L</th>
+                            <th style="text-align: center;vertical-align: middle;">Pulse Amplitude (V) TP4_V</th>
+                        </tr>
+                    </thead> 
+                    <!-- <pre>{{product_data |json}}</pre> -->
+                    <tbody ng-repeat="test_case in product_data.test_cases">
+                        <pre>{{test_case}}</pre>
+                        <!-- test case 1 -->
+                        <!-- <tr> -->
+                            <tr>
+                                <td rowspan="{{test_case['mode_length'] * 2}}" style="text-align: center;vertical-align: middle;"> TC#{{test_case['Test Case']}}</td>
+                                <td rowspan="{{test_case['mode_length'] * 2}}" style="text-align: center;vertical-align: middle;">{{test_case['Test Condition']}}</td>
+                                <td rowspan="{{test_case['mode_length'] * 2}}" style="text-align: center;vertical-align: middle;">{{test_case['Valid for Modes']}}</td>
+                            </tr>
+                            <tr ng-repeat="mode_data in test_case.Mode_data">
+                                <td rowspan="2" style="text-align: center;vertical-align: middle;">{{mode_data['mode_name']}}</td>
+                                <td rowspan="2" style="text-align: center;vertical-align: middle;">±100</td>
+                                <td rowspan="2" style="text-align: center;vertical-align: middle;">±0.1</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;vertical-align: middle;">Expected</td>
+
+                                <td style="text-align: center;vertical-align: middle;">--</td>                            
+                                <td style="text-align: center;vertical-align: middle;">3</td>                            
+                                <td style="text-align: center;vertical-align: middle;">3.3</td>                            
+                                <td style="text-align: center;vertical-align: middle;">--</td>                            
+                                <td style="text-align: center;vertical-align: middle;">0</td>                            
+                                <td style="text-align: center;vertical-align: middle;">3</td>                            
+                                <td style="text-align: center;vertical-align: middle;">20-20-20</td>                            
+                                <td style="text-align: center;vertical-align: middle;">50-50</td>                            
+                                <td style="text-align: center;vertical-align: middle;">3.3</td>                            
+                                <td style="text-align: center;vertical-align: middle;">--</td>                            
+                                <td style="text-align: center;vertical-align: middle;">--</td>                            
+                                <td style="text-align: center;vertical-align: middle;">3.3</td>                            
+                                <td style="text-align: center;vertical-align: middle;">0</td>                            
+                                <td rowspan="2" style="text-align: center;vertical-align: middle;"></td>                            
+                                <td rowspan="2" style="text-align: center;vertical-align: middle;"></td>                            
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;vertical-align: middle;">Actual</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            
+                        <!-- </tr> -->
+                    </tbody>
+                </table>
+            </div>
+           
             <div class="row col-sm-12" style="padding-right: 0px;">
             <ul id="pagination-sec1" class="pagination-sm" style="float: right;margin-top: 5px;margin-bottom: 45px"></ul>
         </div>
@@ -171,5 +265,18 @@ color: green;
                 todayHighlight: true
             });
 
-
+            $(document).ready(function() {
+                $("#fixTable").tableHeadFixer({
+                    // fix table header
+                    head: true,
+                    // fix table footer
+                    foot: false,
+                    // fix x left columns
+                    left: 1,
+                    // fix x right columns
+                    right: 0,
+                    // z-index
+                    'z-index': 0
+                }); 
+            });
 </script>
