@@ -20,7 +20,6 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore)
 			}
 			var promise = services.getReportList(req);
 			promise.success(function (result) {
-				debugger
 				if(result.status_code == 200){
 					Utility.stopAnimation();
 					rpc.reportList = result.data;
@@ -28,7 +27,6 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore)
 					for(var i=0; i<rpc.reportList.length; i++){
 						arr = {};
 						$.each( rpc.reportList[i], function( key, value ) {
-							
 							arr["project_id"] = key;
 							arr["test_cases"] = [];
 							var test_case_length = Object.keys(value).length;
@@ -42,15 +40,18 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore)
 										$.each( value2, function( key3, value3 ) {
 											value3["mode_name"] = key3;
 											value1["Mode_data"].push(value3);
+											$.each( value3, function( key4, value4 ) {
+												if(key4 == "Actual"){
+													$.each( value4, function( key5, value5 ) {
+														value5["created_at"] = Utility.formatDate(value5["created_at"]);
+													});
+												}
+											});
 										});
-										
 						  			}
 						  		});
 						  		arr["test_cases"].push(value1);
-
 						  	});
-						  	
-						  	
 						});
 						
 						rpc.data.push(arr);

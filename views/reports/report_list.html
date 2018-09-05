@@ -5,6 +5,11 @@
             #fixTable {
                 width: 1800px !important;
             }
+            #fixTable td { 
+                text-align: center;
+                vertical-align: middle; 
+            }
+
         
 </style>
 <section class="content" ng-cloak>
@@ -155,98 +160,100 @@
                 </tbody>
             </table>
             
-            <div class="table-responsive" style="width: 100%;height: 400px;overflow: scroll;max-height: none;min-height: 0px;max-width: none;min-width: 0px;" ng-repeat="product_data in rpc.data track by $index">
+            <div ng-repeat="product_data in rpc.data track by $index">
 
+                <h4>Product Id : {{product_data.project_id}}</h4>
 
-                <table class="table table-condensed table-bordered" id="fixTable">
+                <div class="table-responsive" style="width: 100%;height: 400px;overflow: scroll;max-height: none;min-height: 0px;max-width: none;min-width: 0px;" >
 
-                    <thead class="thead-default">
-                        <tr>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Case #</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Condition</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Valid for Modes</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Mode</th>
-                            <th colspan="2" style="text-align: center;vertical-align: middle;">Accepted Tolerance</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Output</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Time when Trigger Occurred (TP3_T) (sec)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Time when Trigger Occurred (TP4_T)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP1 (VCC) (TP1_V)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP2 (Int. Firing Pulse)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP3 (Neutralization Pulse) TP3_V</th>
-                            <th colspan="4" style="text-align: center;vertical-align: middle;">TP4 (Firing Pulse)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP5 (3.3V Till 6 Sec)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP6 (Int. Firing Pulse)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TP7 (Arming Safety) TP7_V @ 200ms (V)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">(Arming Safety) TP7_V2 @ 1.8 ms (V)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">Final Status (OK/NOT OK)</th>
-                            <th rowspan="2" style="text-align: center;vertical-align: middle;">DATE</th>
-                           <!--  <th>Action</th> -->
-                        </tr>
-                        <tr>
-                            <th style="text-align: center;vertical-align: middle;">Time (ms)</th>
-                            <th style="text-align: center;vertical-align: middle;">Voltage (V)</th>
-                            <th style="text-align: center;vertical-align: middle;">No. of Pulses (PC)</th>
-                            <th style="text-align: center;vertical-align: middle;">Pulse Width (ms) TP4_P_H</th>
-                            <th style="text-align: center;vertical-align: middle;">Pulse Gap (ms) TP4_P_L</th>
-                            <th style="text-align: center;vertical-align: middle;">Pulse Amplitude (V) TP4_V</th>
-                        </tr>
-                    </thead> 
-                    <!-- <pre>{{product_data |json}}</pre> -->
-                    <tbody ng-repeat="test_case in product_data.test_cases">
-                        <pre>{{test_case}}</pre>
-                        <!-- test case 1 -->
-                        <!-- <tr> -->
+                    <table class="table table-condensed table-bordered"  id="fixTable">
+
+                        <thead class="thead-default">
                             <tr>
-                                <td rowspan="{{test_case['mode_length'] * 2}}" style="text-align: center;vertical-align: middle;"> TC#{{test_case['Test Case']}}</td>
-                                <td rowspan="{{test_case['mode_length'] * 2}}" style="text-align: center;vertical-align: middle;">{{test_case['Test Condition']}}</td>
-                                <td rowspan="{{test_case['mode_length'] * 2}}" style="text-align: center;vertical-align: middle;">{{test_case['Valid for Modes']}}</td>
-                            </tr>
-                            <tr ng-repeat="mode_data in test_case.Mode_data">
-                                <td rowspan="2" style="text-align: center;vertical-align: middle;">{{mode_data['mode_name']}}</td>
-                                <td rowspan="2" style="text-align: center;vertical-align: middle;">±100</td>
-                                <td rowspan="2" style="text-align: center;vertical-align: middle;">±0.1</td>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Case #</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Condition</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Valid for Modes</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Mode</th>
+                                <th colspan="2" style="text-align: center;vertical-align: middle;">Accepted Tolerance</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Output</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Time when Trigger Occurred (TP3_T) (sec)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Time when Trigger Occurred (TP4_T)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">TP1 (VCC) (TP1_V)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">TP2 (Int. Firing Pulse)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">TP3 (Neutralization Pulse) TP3_V</th>
+                                <th colspan="4" style="text-align: center;vertical-align: middle;">TP4 (Firing Pulse)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">TP5 (3.3V Till 6 Sec)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">TP6 (Int. Firing Pulse)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">TP7 (Arming Safety) TP7_V @ 200ms (V)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">(Arming Safety) TP7_V2 @ 1.8 ms (V)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">Final Status (OK/NOT OK)</th>
+                                <th rowspan="2" style="text-align: center;vertical-align: middle;">DATE</th>
+                               <!--  <th>Action</th> -->
                             </tr>
                             <tr>
-                                <td style="text-align: center;vertical-align: middle;">Expected</td>
-
-                                <td style="text-align: center;vertical-align: middle;">--</td>                            
-                                <td style="text-align: center;vertical-align: middle;">3</td>                            
-                                <td style="text-align: center;vertical-align: middle;">3.3</td>                            
-                                <td style="text-align: center;vertical-align: middle;">--</td>                            
-                                <td style="text-align: center;vertical-align: middle;">0</td>                            
-                                <td style="text-align: center;vertical-align: middle;">3</td>                            
-                                <td style="text-align: center;vertical-align: middle;">20-20-20</td>                            
-                                <td style="text-align: center;vertical-align: middle;">50-50</td>                            
-                                <td style="text-align: center;vertical-align: middle;">3.3</td>                            
-                                <td style="text-align: center;vertical-align: middle;">--</td>                            
-                                <td style="text-align: center;vertical-align: middle;">--</td>                            
-                                <td style="text-align: center;vertical-align: middle;">3.3</td>                            
-                                <td style="text-align: center;vertical-align: middle;">0</td>                            
-                                <td rowspan="2" style="text-align: center;vertical-align: middle;"></td>                            
-                                <td rowspan="2" style="text-align: center;vertical-align: middle;"></td>                            
+                                <th style="text-align: center;vertical-align: middle;">Time (ms)</th>
+                                <th style="text-align: center;vertical-align: middle;">Voltage (V)</th>
+                                <th style="text-align: center;vertical-align: middle;">No. of Pulses (PC)</th>
+                                <th style="text-align: center;vertical-align: middle;">Pulse Width (ms) TP4_P_H</th>
+                                <th style="text-align: center;vertical-align: middle;">Pulse Gap (ms) TP4_P_L</th>
+                                <th style="text-align: center;vertical-align: middle;">Pulse Amplitude (V) TP4_V</th>
                             </tr>
-                            <tr>
-                                <td style="text-align: center;vertical-align: middle;">Actual</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            
-                        <!-- </tr> -->
-                    </tbody>
-                </table>
+                        </thead> 
+                        <!-- <pre>{{product_data |json}}</pre> -->
+                        <div>
+                        <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength">
+                            <!-- test case 1 -->
+                            <!-- <tr> -->
+                                <tr>
+                                    <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength']}}"> TC#{{test_case['Test Case']}}</td>
+                                    <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength']}}">{{test_case['Test Condition']}}</td>
+                                    <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength']}}">{{test_case['Valid for Modes']}}</td>
+                                </tr>
+                                <tr ng-repeat-start="mode_data in test_case.Mode_data">
+                                    <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['mode_name']}}</td>
+                                    <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Time (ms)']}}</td>
+                                    <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Voltage (V)']}}</td>
+                                    <td>Excepted</td>
+                                    <td> {{mode_data['Excepted'].test_point_3_time}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_4_time}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_1_voltage}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_2}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_3_voltage}}</td>
+                                    <td> {{mode_data['Excepted'].number_of_pulse}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_4_pulse_high}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_4_pulse_low}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_4_voltage}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_5}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_6}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_7_V}}</td>
+                                    <td> {{mode_data['Excepted'].test_point_7_V2}}</td>
+                                </tr>
+                                <tr ng-repeat-end ng-repeat="ac_data in mode_data['Actual']">
+                                    <td>Actual</td>
+                                    <td> {{ac_data.test_point_3_time}}</td>
+                                    <td> {{ac_data.test_point_4_time}}</td>
+                                    <td> {{ac_data.test_point_1_voltage}}</td>
+                                    <td> {{ac_data.test_point_2}}</td>
+                                    <td> {{ac_data.test_point_3_voltage}}</td>
+                                    <td> {{ac_data.number_of_pulse}}</td>
+                                    <td> {{ac_data.test_point_4_pulse_high}}</td>
+                                    <td> {{ac_data.test_point_4_pulse_low}}</td>
+                                    <td> {{ac_data.test_point_4_voltage}}</td>
+                                    <td> {{ac_data.test_point_5}}</td>
+                                    <td> {{ac_data.test_point_6}}</td>
+                                    <td> {{ac_data.test_point_7_V}}</td>
+                                    <td> {{ac_data.test_point_7_V2}}</td>
+                                    <td> {{ac_data.status}}</td>
+                                    <td> {{ac_data.created_at}}</td>
+                                </tr>
+                                
+                            <!-- </tr> -->
+                        </tbody>
+                    </div>
+                    </table>
+                </div>
             </div>
-           
+
             <div class="row col-sm-12" style="padding-right: 0px;">
             <ul id="pagination-sec1" class="pagination-sm" style="float: right;margin-top: 5px;margin-bottom: 45px"></ul>
         </div>
