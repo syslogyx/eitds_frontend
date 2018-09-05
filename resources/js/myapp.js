@@ -1,6 +1,6 @@
 var Utility = {
     apiBaseUrl: "http://172.16.1.36:8000/api/",
-
+    imgBaseUrl: "http://172.16.1.36:8000/img/",
     formatDate: function (date, format) {
         var tDate = null;
         if (format == "Y/m/d") {
@@ -73,6 +73,7 @@ app.constant('RESOURCES', (function () {
         TOKEN: "null",
         // SERVER_API:"http://172.16.1.155:8080/api/"
         SERVER_API: Utility.apiBaseUrl,
+        SERVER_IMG: Utility.imgBaseUrl,
         CONTENT_TYPE: 'application/x-www-form-urlencoded; charset=UTF-8',
         COMPANY_NAME: 'Syslogyx Technologies Pvt. Ltd.',
         COMPANY_ID: 3
@@ -330,7 +331,7 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         })
     };
 
-    this.getPdfSettingList = function (req) {
+    this.getPdfSettingList = function () {
         Utility.startAnimation();
         return $http({
             method: 'GET',
@@ -338,6 +339,30 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
             dataType: 'json',
             headers: {
                 'Content-Type': RESOURCES.CONTENT_TYPE
+            }
+        })
+    };
+
+    this.getColumnList = function () {
+        Utility.startAnimation();
+        return $http({
+            method: 'GET',
+            url: RESOURCES.SERVER_API + "get/columnList",
+            dataType: 'json',
+            headers: {
+                'Content-Type': RESOURCES.CONTENT_TYPE
+            }
+        })
+    };
+    this.savePDFSetting = function (request) {
+        Utility.startAnimation();
+        return $http({
+            method: 'POST',
+            url: RESOURCES.SERVER_API + "add/pdfSetting",
+            dataType: 'form-data',
+            data: request,
+            headers: {
+                'Content-Type': undefined
             }
         })
     };

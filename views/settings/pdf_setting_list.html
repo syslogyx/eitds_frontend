@@ -18,9 +18,9 @@
                         <thead>
                             <tr>
                                 <th style="text-align: center;">Sr No.</th>
+                                <th>Logo</th>
                                 <th>Header</th>
                                 <th>Footer</th>
-                                <th>Logo</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -28,10 +28,11 @@
                         <tbody>
                             <tr ng-if="set.pdfSettingList.length > 0" ng-repeat="data in set.pdfSettingList">
                                 <td style="text-align: center;" ng-bind="($index + 1)"></td>
+                                <td>
+                                  <img style="width:50px;height:50px" src="{{set.imgURL}}{{data.logo}}" />
+                                </td>
                                 <td>{{data.header_heading}}</td>
                                 <td>{{data.footer_heading}}</td>
-                                <!--<td>{{data.total_experience}}</td>-->
-                                <td>{{data.logo}}</td>
                                 <td>{{data.status}}</td>
                             </tr>
                             <tr ng-if="set.pdfSettingList == null || set.pdfSettingList.length == 0">
