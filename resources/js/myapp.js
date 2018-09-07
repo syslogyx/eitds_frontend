@@ -45,6 +45,51 @@ var Utility = {
 
 var app = angular.module("myapp", ['ngRoute', 'mm.acl', 'ngCookies' ]);
 
+//export html table to pdf, excel and doc format directive
+app.factory('Excel',function($window){
+        var uri = 'data:application/vnd.ms-excel;base64,'
+                , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office"xmlns:x="urn:schemas-microsoft-com:office:excel"xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+                , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return {
+            tableToExcel:function(tableId,worksheetName){
+                var table=$(tableId),
+                    ctx={worksheet:worksheetName,table:table.html()},
+                    href=uri+base64(format(template,ctx));
+                return href;
+            }
+        };
+    })
+
+app.directive('exportToPdf', function(){
+
+   return {
+       restrict: 'E',
+       scope: {
+            elemId: '@'
+       },
+       template: '<button data-ng-click="exportToPdf()">Export to PDF</button>',
+       link: function(scope, elem, attr){
+
+          scope.exportToPdf = function() {
+
+              var doc = new jsPDF('landscape');
+
+              console.log('elemId 12312321', scope.elemId);
+
+              doc.fromHTML(
+              document.getElementById(scope.elemId).innerHTML, 15, 15, {
+                     'width': 170
+              });
+
+              doc.save('a4.pdf')
+
+           }
+       }                   
+   }
+
+});    
+
 app.factory("menuService", ["$rootScope", function ($rootScope) {
     "use strict";
     return {
@@ -82,7 +127,6 @@ app.constant('RESOURCES', (function () {
 })());
 
 app.directive('ngFiles', ['$parse', function ($parse) {
-
     function fn_link(scope, element, attrs) {
         var onChange = $parse(attrs.ngFiles);
         element.on('change', function (event) {
@@ -94,6 +138,8 @@ app.directive('ngFiles', ['$parse', function ($parse) {
         link: fn_link
     }
 } ])
+
+
 
 app.service('checkAuthentication', function (RESOURCES, $http, $cookieStore, $filter,services,AclService) {
     this.checkPermission=function(q,permission){
@@ -451,6 +497,15 @@ app.config(function ($routeProvider, $locationProvider) {
             })
             .when('/report/report_list', {
                 templateUrl: 'views/reports/report_list.html',
+                controller: 'reportCtrl',
+                controllerAs: 'rpc',
+                resolve: {
+                    'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
+
+                    }]
+                }
+            }).when('/report/report_pdf', {
+                templateUrl: 'views/reports/report_pdf.html',
                 controller: 'reportCtrl',
                 controllerAs: 'rpc',
                 resolve: {

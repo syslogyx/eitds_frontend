@@ -1,4 +1,4 @@
-app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore) {
+app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,Excel,$timeout) {
 
 	var rpc = this;
 
@@ -23,6 +23,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore)
 				if(result.status_code == 200){
 					Utility.stopAnimation();
 					rpc.reportList = result.data;
+					rpc.columnList = result.columnList;
 					rpc.data = [];
 					for(var i=0; i<rpc.reportList.length; i++){
 						arr = {};
@@ -44,6 +45,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore)
 												if(key4 == "Actual"){
 													$.each( value4, function( key5, value5 ) {
 														value5["created_at"] = Utility.formatDate(value5["created_at"]);
+														value5["not_ok_columns"] = value5["not_ok_column"].split(",");
 													});
 												}
 											});
@@ -91,7 +93,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore)
 
 		rpc.getProductList=function(){
 			var req={
-							id:0
+				id:0
 			}
 			if(loggedInUser.identity.role!=1){
 				req.id=loggedInUser.id;
@@ -111,9 +113,70 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore)
 		}
 		rpc.getProductList();
 
-
 		rpc.clearForm=function(){
 			rpc.deviceId='';
 		}
+
+		rpc.checkIfExist=function(key,arr,value=null){
+			// debugger;
+			if(arr.indexOf(key) !== -1) {
+			  	// console.log('key exists!');
+			  	return false;
+			}else if(key == "status"){
+				if(value == "NOT OK"){
+					return false;
+				}else{
+					return true;
+				}
+				// ng-class="{ok: value.status == 'OK', not_ok: value.status != 'OK'}"
+			}else{
+				// console.log('key not exists!');
+				return true;
+			}
+		}
+
+        $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+	        // var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
+	        // $timeout(function(){location.href=exportHref;},100); // trigger download
+	        $scope.exportHref = Excel.tableToExcel(tableId, 'WireWorkbenchDataExport');
+			$timeout(function() {
+				var link = document.createElement('a');
+				link.download = "Report_"+rpc.filterProductId+".xls";
+				link.href = $scope.exportHref;
+				link.click();
+			}, 100);
+        }
+            
+        $scope.exportToPdf = function(){
+        	html2canvas(document.getElementById('fixTable'), {
+        		onpreloaded: function(){ /* set parent overflow to visible */
+        			$('.table-data').css("overflow","visible");
+        			$('.table-data').css("height","auto");
+        		},
+  				onparsed: function(){  /* reset parent overflow */ 
+        			$('.table-data').css("overflow","scroll");
+        			$('.table-data').css("height","400px");
+  				},
+            	onrendered: function (canvas) {
+                	var data = canvas.toDataURL();
+                	var docDefinition = {
+                    	content: [{
+	                        image: data,
+	                        width: 500,
+                    	}]
+                	};
+                	// pdfMake.createPdf(docDefinition).download("example.pdf");
+                 	pdfMake.createPdf(docDefinition).download("test.pdf");
+            	}
+        	});
+     	}
+
+        $scope.exportData = function () {
+          var blob = new Blob([document.getElementById('tableToExport').innerHTML], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+          });
+          // FileSaver.saveAs(blob, "Leads "+new Date()+".xls");
+          window.saveAs(blob, "Report.xls");
+        };
 
 });
