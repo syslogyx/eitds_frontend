@@ -1,16 +1,16 @@
 <script type="text/javascript" src="/resources/plugins/tableHeadFixer/tableHeadFixer.js"></script>
 
 <style type="text/css">
-    
+
             #fixTable {
                 width: 1800px !important;
             }
-            #fixTable td { 
+            #fixTable td {
                 text-align: center;
-                vertical-align: middle; 
+                vertical-align: middle;
             }
 
-        
+
 </style>
 <section class="content" ng-cloak>
     <div class="container-fluid" style="overflow-y: hidden;">
@@ -159,7 +159,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
             <div ng-repeat="product_data in rpc.data track by $index">
 
                 <h4>Product Id : {{product_data.project_id}}</h4>
@@ -198,7 +198,7 @@
                                 <th style="text-align: center;vertical-align: middle;">Pulse Gap (ms) TP4_P_L</th>
                                 <th style="text-align: center;vertical-align: middle;">Pulse Amplitude (V) TP4_V</th>
                             </tr>
-                        </thead> 
+                        </thead>
                         <!-- <pre>{{product_data |json}}</pre> -->
                         <div>
                         <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength">
@@ -211,8 +211,8 @@
                                 </tr>
                                 <tr ng-repeat-start="mode_data in test_case.Mode_data">
                                     <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['mode_name']}}</td>
-                                    <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Time (ms)']}}</td>
-                                    <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Voltage (V)']}}</td>
+                                    <td rowspan="{{mode_data['Actual'].length + 1}}" >±{{mode_data['Time (ms)']}}</td>
+                                    <td rowspan="{{mode_data['Actual'].length + 1}}" >±{{mode_data['Voltage (V)']}}</td>
                                     <td>Excepted</td>
                                     <td> {{mode_data['Excepted'].test_point_3_time}}</td>
                                     <td> {{mode_data['Excepted'].test_point_4_time}}</td>
@@ -246,7 +246,7 @@
                                     <td> {{ac_data.status}}</td>
                                     <td> {{ac_data.created_at}}</td>
                                 </tr>
-                                
+
                             <!-- </tr> -->
                         </tbody>
                     </div>
@@ -284,6 +284,6 @@
                     right: 0,
                     // z-index
                     'z-index': 0
-                }); 
+                });
             });
 </script>
