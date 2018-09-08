@@ -20,7 +20,7 @@ app.controller("menuCtrl", function ($scope, services, $http, $location, $cookie
           {"Title": "User Management", "Link": "/user/user_list", "icon": "fa fa-user", "active":"deactive"},
           {"Title": "Device Management", "Link": "/device/device_list", "icon": "fa fa-user", "active":"deactive"},
           {"Title": "Report", "Link": "/report/report_list", "icon": "fa fa-user", "active":"deactive"},
-          {"Title": "PDF Setting", "Link": "/setting/pdf_setting_list", "icon": "fa  fa-gear", "active":"deactive"}
+          {"Title": "Report Setting", "Link": "/setting/pdf_setting_list", "icon": "fa  fa-gear", "active":"deactive"}
       ];
     }
 
