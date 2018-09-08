@@ -283,7 +283,7 @@
 
                                 <thead class="thead-default">
                                     <tr>
-                                        <th ng-repeat="col_data in rpc.columnList.selected_columns track by $index" style="text-align: center;vertical-align: middle;">{{col_data.column_display_name}}</th>
+                                        <th ng-repeat="col_data in rpc.columnList.selected_columns track by $index" ng-if="col_data.status" style="text-align: center;vertical-align: middle;">{{col_data.column_display_name}}</th>
                                     </tr>
                                 </thead> 
                                 <!-- <pre>{{product_data |json}}</pre> -->
