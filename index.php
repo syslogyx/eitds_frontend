@@ -357,7 +357,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
-        
+
 
         <script src="/resources/js/myapp.js"></script>
         <script type="text/javascript">
@@ -366,6 +366,7 @@
                                     "homeCtrl",
                                     "loginCtrl",
                                     "deviceCtrl",
+                                    "generateStickerCtrl",
                                     "menuCtrl",
                                     "userCtrl",
                                     "deviceManagmentCtrl",

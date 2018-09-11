@@ -85,10 +85,10 @@ app.directive('exportToPdf', function(){
               doc.save('a4.pdf')
 
            }
-       }                   
+       }
    }
 
-});    
+});
 
 app.factory("menuService", ["$rootScope", function ($rootScope) {
     "use strict";
@@ -469,6 +469,16 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'views/device/assign_device.html',
                 controller: 'deviceCtrl',
                 controllerAs: 'dev',
+                resolve: {
+                    'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
+
+                    }]
+                }
+            })
+            .when('/generate/sticker', {
+                templateUrl: 'views/generateSticker/generate_sticker.html',
+                controller: 'generateStickerCtrl',
+                controllerAs: 'ges',
                 resolve: {
                     'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
 

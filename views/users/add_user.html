@@ -12,11 +12,11 @@
                </div>
             </div>
 
-            <div class="col-md-6"> 
+            <div class="col-md-6">
                <div class="pull-right" style="margin-top: 5px; margin-right: 30px;">
                         <a ng-href="/user/user_list"><button type="button" class="btn btn-default btn-sm" title="Back" style="border:white;color:#428bca;"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
-                    </div> 
-                </div>                
+                    </div>
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -28,15 +28,15 @@
                                 <label class="mandatory" for="">Name</label>
                                 <input type="text" class="form-control" name="userName" ng-model="usc.userName" placeholder="Enter user name">
                             </div>
-                        </div>  
+                        </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mandatory" for="">Email</label>
                                 <input type="text" class="form-control" name="userEmail" ng-model="usc.userEmail" placeholder="Enter email">
                             </div>
-                        </div> 
-                    </div>  
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -45,9 +45,9 @@
                             <!-- text input -->
                             <div class="form-group">
                                 <label class="mandatory" for="">Password</label>
-                                <input type="text" class="form-control" name="userpassword" ng-model="usc.userpassword" placeholder="Enter password">
+                                <input type="password" class="form-control" name="userpassword" ng-model="usc.userpassword" placeholder="Enter password">
                             </div>
-                        </div>  
+                        </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
@@ -55,8 +55,8 @@
                                 <select id="userRole" ng-model="usc.userRole" name="userRole" class="form-control s2mn" style="width:100%;" ng-options="x.id as x.name for x in usc.userRoleList" >
                                 <option value="" style="color:#ccc;">Select role</option></select>
                             </div>
-                        </div> 
-                     </div> 
+                        </div>
+                     </div>
                 </div>
                 <!-- /.row -->
             </div>
@@ -64,8 +64,8 @@
 
             <div class="box-footer">
                 <div class="pull pull-right">
-                    <input type="submit" value="Save" data-ng-click="usc.saveUser()" class="btn btn-success"/> 
-                    <input ng-if="tec.title == 'Add New Technology'" type="reset" value="Reset" ng-click="resetForm()" class="btn" /> 
+                    <input type="submit" value="Save" data-ng-click="usc.saveUser()" class="btn btn-success"/>
+                    <input ng-if="tec.title == 'Add New Technology'" type="reset" value="Reset" ng-click="resetForm()" class="btn" />
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
 
 <style type="text/css">
     .select2-container--default .select2-selection--multiple {
-        border: 1px solid #ccc!important; 
+        border: 1px solid #ccc!important;
         border-radius: 0px!important;
     }
 </style>
