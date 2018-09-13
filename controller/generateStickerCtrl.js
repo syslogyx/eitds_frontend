@@ -7,19 +7,21 @@ app.controller('generateStickerCtrl', function ($scope,menuService,services,$coo
 
 
 		ges.generateSticker = function () {
-			return console.log({user_id:loggedInUser.id,productId:ges.productId});
-				// var promise = services.generateSticker({user_id:loggedInUser.id,productId:ges.productId});
-				// promise.success(function (result) {
-				// 	if(result.status_code == 200){
-				// 		Utility.stopAnimation();
-				// 			ges.userList = result.data;
-				// 			ges.userName=ges.userId!=undefined?ges.userId:loggedInUser.id.toString();
-				// 	}else{
-				// 		Utility.stopAnimation();
-				// 			ges.userList = [];
-				// 			toastr.error(result.message, 'Sorry!');
-				// 	}
-				// });
+			// return console.log({user_id:loggedInUser.id,productId:ges.productId});
+			var promise = services.generateSticker({product_id:ges.productId});
+			promise.success(function (result) {
+				debugger;
+				if(result.status_code == 200){
+					Utility.stopAnimation();
+						ges.finalId = result.data[0].finalId;
+						ges.seriesName = result.data[0].seriesName;
+						
+				}else{
+					Utility.stopAnimation();
+						ges.finalId = '';
+						toastr.error(result.message, 'Sorry!');
+				}
+			});
 		}
 
 		ges.clearForm=function(){

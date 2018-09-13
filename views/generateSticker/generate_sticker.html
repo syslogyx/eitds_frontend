@@ -1,4 +1,11 @@
 <section class="content" ng-cloak>
+    <style type="text/css">
+        .final_id{
+            text-align: center;
+            font-size: 45px;
+            font-weight: bolder;
+        }
+    </style>
 <br><br>
     <form role="form" name="addForm" id="deviceForm" >
         <div class="box box-default" >
@@ -7,9 +14,9 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
-                    <div class="form-group">
+                    <div class="form-group col-sm-12 final_id">
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-3" style="margin-top: 20px;">
                           <input type="text" id="productId" placeholder="Enter Product ID" ng-model="ges.productId" name="productId" class="form-control">
                         </div>
                         <div class="col-sm-3">
@@ -18,12 +25,16 @@
                                 <input type="button" value="Clear" ng-click="ges.clearForm()" class="btn" style="outline: 0;"/>
                             </div>
                         </div>
+                        <div class="col-sm-6 ">
+                            <div>{{ges.seriesName}}{{ges.finalId}}</div>
+                        </div>
 
                     </div>
                 </div>
-
             </div>
-
+            <div class="box-footer">
+                
+            </div>
         </div>
     </form>
 </section>

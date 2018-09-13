@@ -1,18 +1,128 @@
 <section class="content">
+    <style type="text/css">
+        #box-data{
+            float: left;
+            margin: 2px;
+        }
+        
+    </style>
     <div class="container-fluid">
         <br>
         <div class="row">
             <div class="col-md-6">
-                <h4>Devices</h4>
+                <h4>Sticker</h4>
             </div>
             <div class="col-md-6 pull-right" style="margin-top:1%;">
-                <button type="button" class="btn btn-primary btn-circle btn-sm pull-right" data-toggle="modal" title="Add new Device" data-toggle="Modal" data-ng-click="openAddDeviceModal()"><i class="fa fa-plus" aria-hidden="true" style="padding-right:0.3px"></i>
-                </button>
-
-
+                
             </div>
         </div>
         <br>
+        
+        <div class="row" id="filterBox">
+            <div class="col-md-12">
+                <div class="box box-primary paddingLeft0">
+                    <div class="box-header with-border paddingLeft0 marginBorderHead">
+                        <div class="formHeadDiv">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h1 class="formheading paddingLeft0">
+                                        Filter
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <form id="filterSeriesForm" name="filterSeriesForm">
+                        <div class="box-body marginEmailBody">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class=""> Month/Year</label>
+                                        <div>
+                                            <div class="input-group" style="width:100%;">
+                                                <select id="series_month_year" ng-model="sti.series_month_year" name="series_month_year" class="form-control s2mn" style="width:100%;"  >
+                                                    <option value="">Select Month/Year</option>
+                                                     <option value="{{series.series_name}}" ng-repeat="series in sti.seriesList">{{series.month_year}}</option>
+                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="">Series Name</label>
+                                        <div>
+                                            <div class="input-group" style="width:100%;">
+                                                <input class="form-control" type="text" name="" ng-value="sti.series_month_year" disabled="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="">From Start</label>
+                                        <div>
+                                            <div class="input-group" style="width:100%;">
+                                                <input class="form-control" type="text" name="from_start" id="from_start" ng-model="sti.from_start" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="">No. of Records</label>
+                                        <div>
+                                            <div class="input-group" style="width:100%;">
+                                                <input class="form-control" type="number" name="records"  ng-model="sti.records">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /.box-body -->
+                    <div class="box-footer" style="margin-right:14px!important;border-top: 1px solid lightgrey!important;">
+                        <div class="row">
+                            <div class="pull-right">
+                                <div class="col-md-6">
+
+                                    <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="sti.findWithFilter();" style="margin-top: 10px;outline: 0;" ><i class="fa fa-search" aria-hidden="true"></i> &nbsp; Find
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-header with-border" style="background: white;">
+                <div class="formHeadDiv">
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="col-md-6">
+                            <h1 class="formheading">
+                                  Sticker List 
+                            </h1>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="pull-right" ng-if="sti.stickerList.length > 0"> 
+                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="sti.download();" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
+                                <!-- <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
+                                </button>
+
+                                <export-to-pdf elem-id="tableToExport"></export-to-pdf> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
         <div>
             <div class="row" >
                 <div class="col-md-12">
@@ -20,28 +130,22 @@
                         <thead>
                             <tr>
                                 <th style="text-align: center;">Sr No.</th>
-
-                                <th>Name</th>
-                                <th>Status</th>
-                                    <th>Username</th>
-                                <th style="text-align: left;" >Action</th>
+                                <th>ID</th>
+                                <th>Temp Id</th>
+                                <th>Series Name</th>
+                                <th>Final Id</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr ng-if="dmc.deviceList.length > 0" ng-repeat="data in dmc.deviceList">
+                            <tr ng-if="sti.stickerList.length > 0" ng-repeat="data in sti.stickerList">
                                 <td style="text-align: center;" ng-bind="($index + 1)"></td>
-
-                                <td>{{data.device_id}}</td>
-                                <td>{{data.status}}</td>
-                                  <td>{{data.username}}</td>
-                                <td style="text-align: left;">
-                                    <button class="btn btn-primary btn-xs" title="Edit" ng-click="dmc.getDeviceData(data.id);"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
-                                    <button class="btn btn-primary btn-xs" title="Reset Device" ng-if="data.status=='ENGAGE'" ng-click="resetDevice($index, data.id)"><i class="fa fa-refresh" aria-hidden="true" ></i></button>
-                                    
-                                </td>
+                                <td>{{data.id}}</td>
+                                <td>{{data.tempId}}</td>
+                                <td>{{data.seriesName}}</td>
+                                <td>{{data.finalId}}</td>
                             </tr>
-                            <tr ng-if="dmc.deviceList == null || dmc.deviceList.length == 0">
+                            <tr ng-if="sti.stickerList == null || sti.stickerList.length == 0">
                                 <td style="text-align: center;" colspan="5">No Records Found</td>
                             </tr>
                         </tbody>
@@ -51,61 +155,16 @@
         </div>
     </div>
 
-    <!-- Modal for adding new project resource -->
-        <div class="modal fade" id="addDeviceModal" role="dialog">
-            <div class="modal-dialog modal-md">
-                <form role="form" name="addDeviceForm" id="addDeviceForm">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">{{dmc.title}}</h4>
-                        </div>
-
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-12">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label class="mandatory" for="">Name</label>
-                                            <input type="text" class="form-control" name="deviceName" ng-model="dmc.deviceName" placeholder="Enter Device name">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <div class="pull pull-right">
-                                <input type="submit" value="Save" data-ng-click="dmc.saveDevice()" class="btn btn-success"/>
-                                <input type="button" value="Reset" ng-click="resetForm()" class="btn" />
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-        </div>
 </section>
 
 <script>
     $(document).ready(function () {
         $("html, body").animate({scrollTop: 0}, "fast");
 
-        $.validator.addMethod('regex', function (value, element, regexp) {
-            if (regexp.constructor != RegExp)
-                regexp = new RegExp(regexp);
-            else if (regexp.global)
-                regexp.lastIndex = 0;
-            return this.optional(element) || regexp.test(value);
-        }, 'Please enter a valid Email Address.');
-
-        $("#addDeviceForm").validate({
+        $("#filterSeriesForm").validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block help-block-error',
             errorPlacement: function (error, element) {
-
                 var type = $(element).attr("type");
                 if ($(element).attr("id") === "userRole")
                 {
@@ -118,13 +177,12 @@
             focusInvalid: true, // set focus the last invalid input
             ignore: [], // validate all fields including form hidden input
             rules: {
-                deviceName: {
-                    required: true
-                }
-            },
-            messages: {
-                userName: {
-                    required: "Device name is required."
+                from_start: {
+                    digits: true,
+                    required:true
+                },
+                series_month_year : {
+                    required:true
                 }
             },
             highlight: function (element) { // hightlight error inputs

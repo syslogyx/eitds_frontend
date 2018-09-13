@@ -413,6 +413,62 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
             }
         })
     };
+    this.getSeriesList = function () {
+        Utility.startAnimation();
+        return $http({
+            method: 'GET',
+            url: RESOURCES.SERVER_API + "get/seriesList",
+            dataType: 'json',
+            headers: {
+                'Content-Type': RESOURCES.CONTENT_TYPE
+            }
+        })
+    };
+    this.getStickerList = function (request) {
+        Utility.startAnimation();
+        return $http({
+            method: 'POST',
+            url: RESOURCES.SERVER_API + "get/stickerList",
+            dataType: 'json',
+            data:  $.param(request),
+            headers: {
+                'Content-Type': RESOURCES.CONTENT_TYPE
+            }
+        })
+    };
+    this.generateSticker = function (request) {
+        Utility.startAnimation();
+        return $http({
+            method: 'POST',
+            url: RESOURCES.SERVER_API + "generateId",
+            dataType: 'json',
+            data:  $.param(request),
+            headers: {
+                'Content-Type': RESOURCES.CONTENT_TYPE
+            }
+        })
+    };
+
+    this.downloadStickerList = function (request) {
+        Utility.startAnimation();
+        return $http({
+            method: 'POST',
+            url: RESOURCES.SERVER_API + "stickers/download",
+            dataType: 'json',
+            data:  $.param(request),
+            headers: {
+                'Content-Type': RESOURCES.CONTENT_TYPE
+            }
+        })
+    };
+
+    this.downloadSticker = function () {
+        // var win = 
+        window.open(RESOURCES.SERVER_API +'stickers/download');
+        // win.setTimeout(function(){this.close();},1500)
+        // win.focus();
+    };
+    
 });
 
 app.config(function ($routeProvider, $locationProvider) {

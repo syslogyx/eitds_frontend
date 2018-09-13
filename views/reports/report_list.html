@@ -120,15 +120,16 @@
             <div class="box-header with-border paddingLeft0 marginBorderHead" style="background: white;">
                 <div class="formHeadDiv">
                     <div class="row">
+                        <div class="col-md-12">
                         <div class="col-md-6">
-                            <h1 class="formheading paddingLeft0">
+                            <h1 class="formheading">
                                   Reports count ({{rpc.reportList.length}})
                             </h1>
                         </div>
 
                         <div class="col-md-6">
                             <div class="pull-right">
-                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF
+                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                 <!-- <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>
 
@@ -137,6 +138,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <table class="table table-condensed table-hover table-responsive" style="display: none;">
