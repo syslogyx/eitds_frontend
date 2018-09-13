@@ -5,7 +5,7 @@
             #fixTable {
                 width: 1800px !important;
             }
-            #fixTable td, #fixTable th {
+            #fixTable td, #fixTable th { 
                 text-align: center;
                 vertical-align: middle;
             }
@@ -21,6 +21,7 @@
                 color: red;
             }
 
+        
 </style>
 <section class="content" ng-cloak>
     <div class="container-fluid" style="overflow-y: hidden;">
@@ -127,7 +128,7 @@
 
                         <div class="col-md-6">
                             <div class="pull-right">
-                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF
+                                <!-- <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToPdf();" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF
                                 <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>
 
@@ -238,7 +239,7 @@
                                     <th style="text-align: center;vertical-align: middle;">Pulse Gap (ms) TP4_P_L</th>
                                     <th style="text-align: center;vertical-align: middle;">Pulse Amplitude (V) TP4_V</th>
                                 </tr>
-                            </thead>
+                            </thead> 
                             <!-- <pre>{{product_data |json}}</pre> -->
                             <!-- <div> -->
                                 <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength">
@@ -313,7 +314,7 @@
                                     <tr>
                                         <th ng-repeat="col_data in rpc.columnList.selected_columns track by $index" ng-if="col_data.status" style="text-align: center;vertical-align: middle;">{{col_data.column_display_name}}</th>
                                     </tr>
-                                </thead>
+                                </thead> 
                                 <!-- <pre>{{product_data |json}}</pre> -->
                                 <!-- <div> -->
                                     <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength">
@@ -394,12 +395,12 @@
 <script>
     $(document).ready(function () {
         $("html, body").animate({scrollTop: 0}, "fast");
-        $("#fixTable").tableHeadFixer();
+        $("#fixTable").tableHeadFixer(); 
         //Date picker
         $('#filterDate').datepicker({
             autoclose: true,
             format:"yyyy-mm-dd",
             todayHighlight: true
         });
-    });
+    }); 
 </script>
