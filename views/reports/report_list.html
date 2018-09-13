@@ -53,7 +53,6 @@
 
                     <form id="filterDataForm" name="filterDataForm">
                         <div class="box-body marginEmailBody">
-
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -68,8 +67,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="">Product ID</label>
                                         <div>
@@ -82,7 +80,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4" >
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="">Status</label>
+                                        <div>
+                                            <div class="input-group" style="width:100%;">
+                                                <select id="filterStatusId" ng-model="rpc.filterStatusId" name="filterStatusId" class="form-control s2mn" style="width:100%;"  >
+                                                    <option value="">Select Status</option>
+                                                     <option value="{{status.id}}" ng-repeat="status in rpc.statusList">{{status.value}}</option>
+                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" >
                                   <div class="form-group">
                                       <label class="" style="visibility: hidden;">Find</label>
                                       <div>
@@ -120,7 +131,7 @@
                                 <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>
 
-                                <export-to-pdf elem-id="tableToExport"></export-to-pdf>
+                                <export-to-pdf elem-id="tableToExport"></export-to-pdf> -->
                             </div>
                         </div>
                     </div>
@@ -171,14 +182,31 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- <pre>{{rpc.data | json}}</pre> -->
             <div id="tableToExport">
                 <div class="export-table" ng-repeat="product_data in rpc.data track by $index" id="export-table">
-
-                    <h4>Product Id : {{product_data.project_id}}</h4>
+                    <div class="box-header with-border paddingLeft0 marginBorderHead" style="background: white;">
+                        
+                        <div class="row">
+                            <div class="col-md-12" >
+                                <div class="col-md-6">
+                                    <div class="pull-center">
+                                        <h4>Product Id : {{product_data.project_id}}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="pull-right">
+                                        <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table',$index, product_data.project_id);" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="table-responsive" style="width: 100%;height: 400px;overflow: scroll;max-height: none;min-height: 0px;max-width: none;min-width: 0px;" >
 
-                        <table class="table table-condensed table-bordered"  id="fixTable">
+                        <table class="table table-condensed table-bordered"  id="fixTable_{{$index}}">
 
                             <thead class="thead-default">
                                 <tr>
@@ -279,7 +307,7 @@
                         </table>
 
                         <div style="display: none;">
-                            <table class="table table-condensed table-bordered"  id="hidden_table">
+                            <table class="table table-condensed table-bordered"  id="hidden_table_{{$index}}">
 
                                 <thead class="thead-default">
                                     <tr>
