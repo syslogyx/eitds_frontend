@@ -360,9 +360,10 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         })
     };
     this.download = function (request) {
-        var win = window.open(RESOURCES.SERVER_API +'report/download/'+request.user_id+'/'+request.date+'/'+request.product_id+'/'+request.type);
-        win.setTimeout(function(){this.close();},1500)
-        win.focus();
+        // var win = 
+        window.open(RESOURCES.SERVER_API +'report/download/'+request.user_id+'/'+request.date+'/'+request.product_id+'/'+request.type);
+        // win.setTimeout(function(){this.close();},1500)
+        // win.focus();
     };
 
     this.getProductList = function (req) {
