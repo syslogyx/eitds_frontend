@@ -544,6 +544,16 @@ app.config(function ($routeProvider, $locationProvider) {
                     }]
                 }
             })
+            .when('/sticker/filter', {
+                templateUrl: 'views/sticker/sticker_list.html',
+                controller: 'stickerCtrl',
+                controllerAs: 'sti',
+                resolve: {
+                    'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
+
+                    }]
+                }
+            })
 
     $locationProvider.html5Mode(true);
 });

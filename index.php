@@ -371,7 +371,8 @@
                                     "userCtrl",
                                     "deviceManagmentCtrl",
                                     "reportCtrl",
-                                    "settingsCtrl"
+                                    "settingsCtrl",
+                                    "stickerCtrl"
                                   ];
 
             document.write('<script type="text/javascript" src="/resources/js/myapp.js?v='+_c+'"><\/script>');
