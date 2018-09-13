@@ -1,19 +1,28 @@
 app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,Excel,$timeout) {
 
 	var rpc = this;
-
+	rpc.statusList = [{
+		"id" : 1,
+		"value" : "OK"
+	},
+	{
+		"id" : 2,
+		"value" : "NOT OK"
+	}]
 
 
     var loggedInUser = JSON.parse(services.getIdentity());
     rpc.userName = loggedInUser.identity.name;
 		rpc.filterDate='';
 		rpc.filterProductId='';
+		rpc.filterStatusId ='';
 
 		console.log(loggedInUser);
 		rpc.getReportList=function(){
 			var req={
 			        "date":rpc.filterDate,
-			        "product_id":rpc.filterProductId
+			        "product_id":rpc.filterProductId,
+			        "status" : rpc.filterStatusId
 			}
 			if(loggedInUser.identity.role!=1){
 				req.user_id=loggedInUser.id;
@@ -135,13 +144,15 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 			}
 		}
 
-        $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+        $scope.exportToExcel=function(tableId,index,project_id){ // ex: '#my-table'
 	        // var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
 	        // $timeout(function(){location.href=exportHref;},100); // trigger download
+	        
+	        tableId = tableId+"_"+index;
 	        $scope.exportHref = Excel.tableToExcel(tableId, 'WireWorkbenchDataExport');
 			$timeout(function() {
 				var link = document.createElement('a');
-				link.download = "Report_"+rpc.filterProductId+".xls";
+				link.download = "Report_"+project_id+".xls";
 				link.href = $scope.exportHref;
 				link.click();
 			}, 100);
