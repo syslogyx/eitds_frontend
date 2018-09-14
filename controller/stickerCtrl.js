@@ -38,6 +38,7 @@ app.controller('stickerCtrl', function ($scope,menuService,services,$cookieStore
             Utility.stopAnimation();
             if(result.status_code == 200){
                 sti.stickerList = result.data;
+								
             }else{
                 sti.stickerList=[];
                 toastr.error(result.message, 'Sorry!');
@@ -58,7 +59,7 @@ app.controller('stickerCtrl', function ($scope,menuService,services,$cookieStore
         }
 
         var promise = services.downloadSticker(request);
-      
+
 
         }
     }

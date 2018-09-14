@@ -1,6 +1,7 @@
 app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,Excel,$timeout) {
 
 	var rpc = this;
+	rpc.currentDate=Utility.formatDate(new Date());
 	rpc.statusList = [{
 		"id" : 1,
 		"value" : "OK"
@@ -64,7 +65,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 						  		arr["test_cases"].push(value1);
 						  	});
 						});
-						
+
 						rpc.data.push(arr);
 
 					}
@@ -147,47 +148,16 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
         $scope.exportToExcel=function(tableId,index,project_id){ // ex: '#my-table'
 	        // var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
 	        // $timeout(function(){location.href=exportHref;},100); // trigger download
-	        
-	        tableId = tableId+"_"+index;
-	        $scope.exportHref = Excel.tableToExcel(tableId, 'WireWorkbenchDataExport');
-			$timeout(function() {
-				var link = document.createElement('a');
-				link.download = "Report_"+project_id+".xls";
-				link.href = $scope.exportHref;
-				link.click();
-			}, 100);
-        }
-            
-        $scope.exportToPdf = function(){
-        	html2canvas(document.getElementById('fixTable'), {
-        		onpreloaded: function(){ /* set parent overflow to visible */
-        			$('.table-data').css("overflow","visible");
-        			$('.table-data').css("height","auto");
-        		},
-  				onparsed: function(){  /* reset parent overflow */ 
-        			$('.table-data').css("overflow","scroll");
-        			$('.table-data').css("height","400px");
-  				},
-            	onrendered: function (canvas) {
-                	var data = canvas.toDataURL();
-                	var docDefinition = {
-                    	content: [{
-	                        image: data,
-	                        width: 500,
-                    	}]
-                	};
-                	// pdfMake.createPdf(docDefinition).download("example.pdf");
-                 	pdfMake.createPdf(docDefinition).download("test.pdf");
-            	}
-        	});
-     	}
 
-        $scope.exportData = function () {
-          var blob = new Blob([document.getElementById('tableToExport').innerHTML], {
-            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-          });
-          // FileSaver.saveAs(blob, "Leads "+new Date()+".xls");
-          window.saveAs(blob, "Report.xls");
-        };
+	        tableId = tableId+"_"+index;
+	        $scope.exportHref = Excel.tableToExcel(tableId, 'Report_'+project_id);
+						$timeout(function() {
+							var link = document.createElement('a');
+							link.download = "Report_"+project_id+".xls";
+							link.href = $scope.exportHref;
+							link.click();
+						}, 100);
+        }
+
 
 });

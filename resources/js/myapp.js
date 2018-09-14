@@ -360,7 +360,7 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         })
     };
     this.download = function (request) {
-        // var win = 
+        // var win =
         window.open(RESOURCES.SERVER_API +'report/download/'+request.user_id+'/'+request.date+'/'+request.product_id+'/'+request.type);
         // win.setTimeout(function(){this.close();},1500)
         // win.focus();
@@ -463,12 +463,12 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
     };
 
     this.downloadSticker = function () {
-        // var win = 
+        // var win =
         window.open(RESOURCES.SERVER_API +'stickers/download');
         // win.setTimeout(function(){this.close();},1500)
         // win.focus();
     };
-    
+
 });
 
 app.config(function ($routeProvider, $locationProvider) {
