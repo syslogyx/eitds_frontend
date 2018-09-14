@@ -1,11 +1,11 @@
 app.controller('stickerCtrl', function ($scope,menuService,services,$cookieStore,$location) {
 
 	var sti = this;
-	
+
     var loggedInUser = JSON.parse(services.getIdentity());
 
 	// sti.init = function () {
-		
+
 	// }
 
 	// sti.init();
@@ -58,15 +58,7 @@ app.controller('stickerCtrl', function ($scope,menuService,services,$cookieStore
         }
 
         var promise = services.downloadSticker(request);
-        promise.success(function (result) {
-            Utility.stopAnimation();
-            if(result.status_code == 200){
-                sti.stickerList = result.data;
-            }else{
-                sti.stickerList=[];
-                toastr.error(result.message, 'Sorry!');
-            }
-        });
+      
 
         }
     }
