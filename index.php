@@ -55,6 +55,10 @@
         <link href="/resources/css/ziehharmonika.css" rel="stylesheet">
         <!-- dropzone -->
         <!--  <link rel="stylesheet" type="text/css" href="/resources/dropzone/dropzone.css"> -->
+
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+
         <script src="/resources/js/sweetalert-master/dist/sweetalert.min.js"></script>
         <!-- Material design icons -->
         <link rel="stylesheet" type="text/css" href="/resources/node_modules/mdi/css/materialdesignicons.min.css">

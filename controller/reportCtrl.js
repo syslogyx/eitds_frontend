@@ -17,13 +17,22 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 		rpc.filterDate='';
 		rpc.filterProductId='';
 		rpc.filterStatusId ='';
-
+		rpc.sequece=false;
 		console.log(loggedInUser);
+		$scope.isChecked=function(status){
+				rpc.sequece=status;
+		}
 		rpc.getReportList=function(){
-			var req={
-			        "date":rpc.filterDate,
-			        "product_id":rpc.filterProductId,
-			        "status" : rpc.filterStatusId
+
+			var req={};
+			if(rpc.filterDate != ''){
+				req.date=rpc.filterDate;
+			}
+			if(rpc.filterProductId != ''){
+				req.product_id=rpc.filterProductId;
+			}
+			if(rpc.filterStatusId != ''){
+				req.status=rpc.filterStatusId;
 			}
 			if(loggedInUser.identity.role!=1){
 				req.user_id=loggedInUser.id;
