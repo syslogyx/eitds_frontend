@@ -343,18 +343,18 @@
                                   <tr >
                                       <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}"  style="text-align: center;vertical-align: middle;">Product ID </th>
                                       <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}"  style="text-align: center;vertical-align: middle;">'{{product_data.project_id}}'</th>
-                                      <th colspan="{{rpc.columnList.selected_columns.length-8}}"  style="text-align: center;vertical-align: middle;">{{rpc.columnList.header_heading}}</th>
+                                      <th colspan="{{rpc.columnList.selected_columns.length-9}}"  style="text-align: center;vertical-align: middle;">{{rpc.columnList.header_heading}}</th>
                                       <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}" style="text-align: center;vertical-align: middle;">Date </th>
                                       <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}" style="text-align: center;vertical-align: middle;">{{rpc.currentDate}}</th>
                                   </tr>
                                   <tr>
-                                      <th colspan="{{rpc.columnList.selected_columns.length}}"  style="text-align: center;vertical-align: middle;">Functional Tests</th>
+                                      <th colspan="{{rpc.columnList.selected_columns.length-1}}"  style="text-align: center;vertical-align: middle;">Functional Tests</th>
 
                                   </tr>
                               </thead>
                                 <thead class="thead-default">
                                     <tr>
-                                        <th ng-repeat="col_data in rpc.columnList.selected_columns track by $index" ng-if="col_data.status" style="text-align: center;vertical-align: middle;">{{col_data.column_display_name}}</th>
+                                        <th ng-repeat="col_data in rpc.columnList.selected_columns track by $index" ng-if="col_data.column_display_name != 'Final Status (OK/NOT OK)'" style="text-align: center;vertical-align: middle;">{{col_data.column_display_name}}</th>
                                     </tr>
                                 </thead>
                                 <!-- <pre>{{product_data |json}}</pre> -->
@@ -414,8 +414,6 @@
                                                 <th ng-if="!rpc.checkIfExist('test_point_7_V',value.not_ok_column)"> {{value.test_point_7_V}}</th>
                                                 <td ng-if="rpc.checkIfExist('test_point_7_V2',value.not_ok_column)"> {{value.test_point_7_V2}}</td>
                                                 <th ng-if="!rpc.checkIfExist('test_point_7_V2',value.not_ok_column)"> {{value.test_point_7_V2}}</th>
-                                                <td ng-if="rpc.checkIfExist('status',value.not_ok_column,value.status)" > {{value.status}}</td>
-                                                <th ng-if="!rpc.checkIfExist('status',value.not_ok_column,value.status)"> {{value.status}}</th>
                                                 <td ng-if="rpc.checkIfExist('created_at',value.not_ok_column)"> {{value.created_at}}</td>
                                                 <th ng-if="!rpc.checkIfExist('created_at',value.not_ok_column)"> {{value.created_at}}</th>
                                             </tr>
