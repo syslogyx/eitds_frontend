@@ -61,6 +61,12 @@ app.factory('Excel',function($window){
         };
     })
 
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
+
 app.directive('exportToPdf', function(){
 
    return {
