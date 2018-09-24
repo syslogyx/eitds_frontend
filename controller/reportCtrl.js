@@ -40,7 +40,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 			var promise = services.getReportList(req);
 			promise.success(function (result) {
 				if(result.status_code == 200){
-					Utility.stopAnimation();
+					// Utility.stopAnimation();
 					rpc.reportList = result.data;
 					rpc.columnList = result.columnList;
 					rpc.data = [];
@@ -84,6 +84,10 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 					rpc.reportList=[];
 						toastr.error(result.message, 'Sorry!');
 				}
+
+				setTimeout(function(){
+					rpc.getReportList();
+				},5000);
 
 			});
 		}

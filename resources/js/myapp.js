@@ -354,7 +354,7 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         })
     };
     this.getReportList = function (request) {
-        Utility.startAnimation();
+      //  Utility.startAnimation();
         return $http({
             method: 'POST',
             url: RESOURCES.SERVER_API + "get/productHistoryByDateAndProductIdNew",
