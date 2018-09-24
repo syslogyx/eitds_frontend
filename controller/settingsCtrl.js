@@ -77,7 +77,8 @@ app.controller('settingsCtrl', function ($scope,menuService,services,RESOURCES,$
 				promise.success(function (result) {
 					if(result.status_code == 200){
 						Utility.stopAnimation();
-							toastr.success(result.message);
+						$location.path('/setting/pdf_setting_list');
+						toastr.success(result.message);
 					}else{
 						Utility.stopAnimation();
 						set.colNames=[];

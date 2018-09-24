@@ -113,7 +113,7 @@ app.controller('deviceCtrl', function ($scope,menuService,services,$cookieStore,
 
     $scope.resetDevice=function(){
         swal({
-            title: 'Rset Device',
+            title: 'Reset Device',
             text: "Are you sure you want to reset device?",
             type: 'warning',
             showCancelButton: true,

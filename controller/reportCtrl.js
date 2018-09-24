@@ -90,24 +90,28 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 		rpc.getReportList();
 
 		rpc.download=function(type){
-			var req={
-			        "date":rpc.filterDate !=''?rpc.filterDate:-1,
-			        "product_id":rpc.filterProductId!=''?rpc.filterProductId:-1,
-							"user_id":loggedInUser.identity.role!=1?loggedInUser.id:-1,
-							"type":type
+			if(rpc.reportList.length > 0){
+				var req={
+								"date":rpc.filterDate !=''?rpc.filterDate:-1,
+								"product_id":rpc.filterProductId!=''?rpc.filterProductId:-1,
+								"user_id":loggedInUser.identity.role!=1?loggedInUser.id:-1,
+								"type":type
+				}
+
+				var promise = services.download(req);
+				// promise.success(function (result) {
+						// Utility.stopAnimation();
+					// if(result.status_code == 200){
+					// 	Utility.stopAnimation();
+					// }else{
+					// 	Utility.stopAnimation();
+					// 		toastr.error(result.message, 'Sorry!');
+					// }
+
+				// });
+			}else{
+					toastr.error('Record not found', 'Sorry!');
 			}
-
-			var promise = services.download(req);
-			// promise.success(function (result) {
-					// Utility.stopAnimation();
-				// if(result.status_code == 200){
-				// 	Utility.stopAnimation();
-				// }else{
-				// 	Utility.stopAnimation();
-				// 		toastr.error(result.message, 'Sorry!');
-				// }
-
-			// });
 		}
 
 		rpc.getProductList=function(){

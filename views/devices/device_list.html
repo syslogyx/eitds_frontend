@@ -6,7 +6,7 @@
                 <h4>Devices</h4>
             </div>
             <div class="col-md-6 pull-right" style="margin-top:1%;">
-                <button type="button" class="btn btn-primary btn-circle btn-sm pull-right" data-toggle="modal" title="Add new Device" data-toggle="Modal" data-ng-click="openAddDeviceModal()"><i class="fa fa-plus" aria-hidden="true" style="padding-right:0.3px"></i>
+                <button type="button" class="btn btn-primary btn-circle btn-sm pull-right" data-toggle="modal" title="Add new Device" data-toggle="Modal" data-ng-click="resetForm(); openAddDeviceModal()"><i class="fa fa-plus" aria-hidden="true" style="padding-right:0.3px"></i>
                 </button>
 
 
@@ -38,7 +38,7 @@
                                 <td style="text-align: left;">
                                     <button class="btn btn-primary btn-xs" title="Edit" ng-click="dmc.getDeviceData(data.id);"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
                                     <button class="btn btn-primary btn-xs" title="Reset Device" ng-if="data.status=='ENGAGE'" ng-click="resetDevice($index, data.id)"><i class="fa fa-refresh" aria-hidden="true" ></i></button>
-                                    
+
                                 </td>
                             </tr>
                             <tr ng-if="dmc.deviceList == null || dmc.deviceList.length == 0">
