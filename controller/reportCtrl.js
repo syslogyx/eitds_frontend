@@ -82,7 +82,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				}else{
 					Utility.stopAnimation();
 					rpc.reportList=[];
-						toastr.error(result.message, 'Sorry!');
+						// toastr.error(result.message, 'Sorry!');
 				}
 
 				setTimeout(function(){
