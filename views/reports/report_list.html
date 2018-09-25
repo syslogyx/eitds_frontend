@@ -21,6 +21,10 @@
             .not_ok {
                 color: red;
             }
+            .toggle.btn {
+                min-width: 90px;
+                min-height: 34px;
+            }
 
 
 </style>
@@ -133,10 +137,10 @@
                             </h1>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6" ng-show="rpc.reportList.length > 0">
                             <div class="pull-right">
                               <input type="checkbox" data-toggle="toggle" id="toggle-switch" data-onstyle="success" data-offstyle="danger" >
-                                <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
+                                <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                 <!-- <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>
 
