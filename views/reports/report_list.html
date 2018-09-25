@@ -224,20 +224,20 @@
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['mode_name']}}</td>
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Time (ms)']}}</td>
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Voltage (V)']}}</td>
-                                            <th style="color:black">Excepted</th>
-                                            <td> {{mode_data['Excepted'].test_point_3_time}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_4_time}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_1_voltage}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_2}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_3_voltage}}</td>
-                                            <td> {{mode_data['Excepted'].number_of_pulse}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_4_pulse_high}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_4_pulse_low}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_4_voltage}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_5}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_6}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_7_V}}</td>
-                                            <td> {{mode_data['Excepted'].test_point_7_V2}}</td>
+                                            <th style="color:black">Expected</th>
+                                            <td> {{mode_data['Expected'].test_point_3_time}}</td>
+                                            <td> {{mode_data['Expected'].test_point_4_time}}</td>
+                                            <td> {{mode_data['Expected'].test_point_1_voltage}}</td>
+                                            <td> {{mode_data['Expected'].test_point_2}}</td>
+                                            <td> {{mode_data['Expected'].test_point_3_voltage}}</td>
+                                            <td> {{mode_data['Expected'].number_of_pulse}}</td>
+                                            <td> {{mode_data['Expected'].test_point_4_pulse_high}}</td>
+                                            <td> {{mode_data['Expected'].test_point_4_pulse_low}}</td>
+                                            <td> {{mode_data['Expected'].test_point_4_voltage}}</td>
+                                            <td> {{mode_data['Expected'].test_point_5}}</td>
+                                            <td> {{mode_data['Expected'].test_point_6}}</td>
+                                            <td> {{mode_data['Expected'].test_point_7_V}}</td>
+                                            <td> {{mode_data['Expected'].test_point_7_V2}}</td>
                                         </tr>
                                         <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']">
                                             <th style="color:black">Actual</th>
@@ -288,20 +288,20 @@
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['mode_name']}}</td>
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['Time (ms)']}}</td>
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['Voltage (V)']}}</td>
-                                        <th style="color:black">Excepted</th>
-                                        <td> {{mode_data['Excepted'].test_point_3_time}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_4_time}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_1_voltage}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_2}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_3_voltage}}</td>
-                                        <td> {{mode_data['Excepted'].number_of_pulse}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_4_pulse_high}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_4_pulse_low}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_4_voltage}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_5}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_6}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_7_V}}</td>
-                                        <td> {{mode_data['Excepted'].test_point_7_V2}}</td>
+                                        <th style="color:black">Expected</th>
+                                        <td> {{mode_data['Expected'].test_point_3_time}}</td>
+                                        <td> {{mode_data['Expected'].test_point_4_time}}</td>
+                                        <td> {{mode_data['Expected'].test_point_1_voltage}}</td>
+                                        <td> {{mode_data['Expected'].test_point_2}}</td>
+                                        <td> {{mode_data['Expected'].test_point_3_voltage}}</td>
+                                        <td> {{mode_data['Expected'].number_of_pulse}}</td>
+                                        <td> {{mode_data['Expected'].test_point_4_pulse_high}}</td>
+                                        <td> {{mode_data['Expected'].test_point_4_pulse_low}}</td>
+                                        <td> {{mode_data['Expected'].test_point_4_voltage}}</td>
+                                        <td> {{mode_data['Expected'].test_point_5}}</td>
+                                        <td> {{mode_data['Expected'].test_point_6}}</td>
+                                        <td> {{mode_data['Expected'].test_point_7_V}}</td>
+                                        <td> {{mode_data['Expected'].test_point_7_V2}}</td>
                                     </tr>
                                     <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual'] track by $index" ng-show="$last">
                                         <th style="color:black">Actual</th>
@@ -375,20 +375,20 @@
                                                 <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['mode_name']}}</td>
                                                 <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Time (ms)']}}</td>
                                                 <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Voltage (V)']}}</td>
-                                                <th style="color:black">Excepted</th>
-                                                <td> {{mode_data['Excepted'].test_point_3_time}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_4_time}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_1_voltage}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_2}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_3_voltage}}</td>
-                                                <td> {{mode_data['Excepted'].number_of_pulse}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_4_pulse_high}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_4_pulse_low}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_4_voltage}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_5}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_6}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_7_V}}</td>
-                                                <td> {{mode_data['Excepted'].test_point_7_V2}}</td>
+                                                <th style="color:black">Expected</th>
+                                                <td> {{mode_data['Expected'].test_point_3_time}}</td>
+                                                <td> {{mode_data['Expected'].test_point_4_time}}</td>
+                                                <td> {{mode_data['Expected'].test_point_1_voltage}}</td>
+                                                <td> {{mode_data['Expected'].test_point_2}}</td>
+                                                <td> {{mode_data['Expected'].test_point_3_voltage}}</td>
+                                                <td> {{mode_data['Expected'].number_of_pulse}}</td>
+                                                <td> {{mode_data['Expected'].test_point_4_pulse_high}}</td>
+                                                <td> {{mode_data['Expected'].test_point_4_pulse_low}}</td>
+                                                <td> {{mode_data['Expected'].test_point_4_voltage}}</td>
+                                                <td> {{mode_data['Expected'].test_point_5}}</td>
+                                                <td> {{mode_data['Expected'].test_point_6}}</td>
+                                                <td> {{mode_data['Expected'].test_point_7_V}}</td>
+                                                <td> {{mode_data['Expected'].test_point_7_V2}}</td>
                                             </tr>
                                             <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']">
                                                 <th style="color:black">Actual</th>
