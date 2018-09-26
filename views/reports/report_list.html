@@ -213,14 +213,33 @@
                             <!-- <pre>{{product_data |json}}</pre> -->
                             <!-- <div> -->
                                 <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength && !rpc.sequece">
+                                    
                                     <!-- test case 1 -->
                                     <!-- <tr> -->
                                         <tr>
-                                            <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength'] - 2}}"> TC#{{test_case['Test Case']}}</td>
-                                            <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength'] - 2}}">{{test_case['Test Condition']}}</td>
-                                            <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength'] - 2}}">{{test_case['Valid for Modes']}}</td>
+                                            <td rowspan="{{test_case['mode_length']  + test_case['ActualLength'] }}"> TC#{{test_case['Test Case']}}</td>
+                                            <td rowspan="{{test_case['mode_length']  + test_case['ActualLength'] }}">{{test_case['Test Condition']}}</td>
+                                            <td rowspan="{{test_case['mode_length']  + test_case['ActualLength'] }}">{{test_case['Valid for Modes']}}</td>
+
+                                            <td rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" ng-if="test_case['mode_length'] > 0" >{{test_case.Mode_data[0]['mode_name']}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0" rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" >{{test_case.Mode_data[0]['Time (ms)']}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0" rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" >{{test_case.Mode_data[0]['Voltage (V)']}}</td>
+                                            <th ng-if="test_case['mode_length'] > 0" style="color:black">Expected</th>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_time}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_time}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_1_voltage}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_2}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_voltage}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].number_of_pulse}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_high}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_low}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_voltage}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_5}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_6}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V}}</td>
+                                            <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V2}}</td>
                                         </tr>
-                                        <tr ng-repeat-start="mode_data in test_case.Mode_data">
+                                        <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0">
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['mode_name']}}</td>
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Time (ms)']}}</td>
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Voltage (V)']}}</td>
@@ -280,11 +299,30 @@
                                 <!-- test case 1 -->
                                 <!-- <tr> -->
                                     <tr>
-                                        <td rowspan="{{(test_case['mode_length'] * 2) + 1}}"> TC#{{test_case['Test Case']}}</td>
-                                        <td rowspan="{{(test_case['mode_length'] * 2) + 1}}">{{test_case['Test Condition']}}</td>
-                                        <td rowspan="{{(test_case['mode_length'] * 2) + 1}}">{{test_case['Valid for Modes']}}</td>
+                                        <td rowspan="{{(test_case['mode_length'] * 2)}}"> TC#{{test_case['Test Case']}}</td>
+                                        <td rowspan="{{(test_case['mode_length'] * 2)}}">{{test_case['Test Condition']}}</td>
+                                        <td rowspan="{{(test_case['mode_length'] * 2)}}">{{test_case['Valid for Modes']}}</td>
+
+
+                                        <td rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" ng-if="test_case['mode_length'] > 0" >{{test_case.Mode_data[0]['mode_name']}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0" rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" >{{test_case.Mode_data[0]['Time (ms)']}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0" rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" >{{test_case.Mode_data[0]['Voltage (V)']}}</td>
+                                        <th ng-if="test_case['mode_length'] > 0" style="color:black">Expected</th>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_time}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_time}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_1_voltage}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_2}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_voltage}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].number_of_pulse}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_high}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_low}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_voltage}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_5}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_6}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V2}}</td>
                                     </tr>
-                                    <tr ng-repeat-start="mode_data in test_case.Mode_data">
+                                    <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0">
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['mode_name']}}</td>
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['Time (ms)']}}</td>
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['Voltage (V)']}}</td>
@@ -367,14 +405,32 @@
                                         <!-- test case 1 -->
                                         <!-- <tr> -->
                                             <tr>
-                                                <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength'] - 2}}"> TC#{{test_case['Test Case']}}</td>
-                                                <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength'] - 2}}">{{test_case['Test Condition']}}</td>
-                                                <td rowspan="{{(test_case['mode_length'] * 2) + test_case['ActualLength'] - 2}}">{{test_case['Valid for Modes']}}</td>
+                                                <td rowspan="{{(test_case['mode_length']*2)}}"> TC#{{test_case['Test Case']}}</td>
+                                                <td rowspan="{{(test_case['mode_length']*2)}}">{{test_case['Test Condition']}}</td>
+                                                <td rowspan="{{(test_case['mode_length']*2)}}">{{test_case['Valid for Modes']}}</td>
+
+                                                <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['mode_name']}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['Time (ms)']}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['Voltage (V)']}}</td>
+                                                <th ng-if="test_case['mode_length'] > 0" style="color:black">Expected</th>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_time}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_time}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_1_voltage}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_2}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_voltage}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].number_of_pulse}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_high}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_low}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_voltage}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_5}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_6}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V}}</td>
+                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V2}}</td>
                                             </tr>
-                                            <tr ng-repeat-start="mode_data in test_case.Mode_data">
-                                                <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['mode_name']}}</td>
-                                                <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Time (ms)']}}</td>
-                                                <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Voltage (V)']}}</td>
+                                            <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0">
+                                                <td rowspan="2" >{{mode_data['mode_name']}}</td>
+                                                <td rowspan="2" >{{mode_data['Time (ms)']}}</td>
+                                                <td rowspan="2" >{{mode_data['Voltage (V)']}}</td>
                                                 <th style="color:black">Expected</th>
                                                 <td> {{mode_data['Expected'].test_point_3_time}}</td>
                                                 <td> {{mode_data['Expected'].test_point_4_time}}</td>
@@ -390,7 +446,7 @@
                                                 <td> {{mode_data['Expected'].test_point_7_V}}</td>
                                                 <td> {{mode_data['Expected'].test_point_7_V2}}</td>
                                             </tr>
-                                            <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']">
+                                            <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']" ng-if="$last">
                                                 <th style="color:black">Actual</th>
                                                 <td ng-if="rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</td>
                                                 <th ng-if="!rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</th>
