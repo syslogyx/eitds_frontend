@@ -10,8 +10,11 @@
                 vertical-align: middle !important;
             }
 
-            .fixTable>tbody>tr>th{
+            .red{
                 color: red;
+            }
+            .green{
+                color: #5cb85c;
             }
 
             .ok {
@@ -267,8 +270,8 @@
                                             <th ng-if="!rpc.checkIfExist('test_point_7_V',value.not_ok_columns)"> {{value.test_point_7_V}}</th>
                                             <td ng-if="rpc.checkIfExist('test_point_7_V2',value.not_ok_columns)"> {{value.test_point_7_V2}}</td>
                                             <th ng-if="!rpc.checkIfExist('test_point_7_V2',value.not_ok_columns)"> {{value.test_point_7_V2}}</th>
-                                            <td ng-if="rpc.checkIfExist('status',value.not_ok_columns,value.status)" > {{value.status}}</td>
-                                            <th ng-if="!rpc.checkIfExist('status',value.not_ok_columns,value.status)"> {{value.status}}</th>
+                                            <th class="green" ng-if="rpc.checkIfExist('status',value.not_ok_columns,value.status)" > {{value.status}}</th>
+                                            <th class="red" ng-if="!rpc.checkIfExist('status',value.not_ok_columns,value.status)"> {{value.status}}</th>
                                             <td ng-if="rpc.checkIfExist('created_at',value.not_ok_columns)"> {{value.created_at}}</td>
                                             <th ng-if="!rpc.checkIfExist('created_at',value.not_ok_columns)"> {{value.created_at}}</th>
                                         </tr>
