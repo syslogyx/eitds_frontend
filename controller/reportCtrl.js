@@ -65,6 +65,39 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 													$.each( value4, function( key5, value5 ) {
 														value5["created_at"] = Utility.formatDate(value5["created_at"]);
 														value5["not_ok_columns"] = value5["not_ok_column"].split(",");
+														if(value4.length == (key5 + 1)){
+															// value1["Mode_data"] = value5;
+															var k = value1["Mode_data"].length - 1;
+															// value1["Mode_data"][0].merge(value5);
+
+															  value1["Mode_data"][k]["user_id"]=value5["user_id"];
+											                  value1["Mode_data"][k]["device_id"]=value5["device_id"];
+											                  value1["Mode_data"][k]["product_id"]=value5["product_id"];
+											                  value1["Mode_data"][k]["mode"]=value5["mode"];
+											                  value1["Mode_data"][k]["test_case"]=value5["test_case"];
+											                  value1["Mode_data"][k]["test_point_3_voltage"]=value5["test_point_3_voltage"];
+											                  value1["Mode_data"][k]["test_point_3_time"]=value5["test_point_3_time"];
+											                  value1["Mode_data"][k]["test_point_4_voltage"]=value5["test_point_4_voltage"];
+											                  value1["Mode_data"][k]["test_point_4_time"]=value5["test_point_4_time"];
+											                  value1["Mode_data"][k]["test_point_4_pulse_low"]=value5["test_point_4_pulse_low"];
+											                  value1["Mode_data"][k]["test_point_4_pulse_high"]=value5["test_point_4_pulse_high"];
+											                  value1["Mode_data"][k]["status"]=value5["status"];
+											                  value1["Mode_data"][k]["date"]=value5["date"];
+											                  value1["Mode_data"][k]["created_at"]=value5["created_at"];
+											                  value1["Mode_data"][k]["updated_at"]=value5["updated_at"];
+											                  value1["Mode_data"][k]["test_point_1_voltage"]=value5["test_point_1_voltage"];
+											                  value1["Mode_data"][k]["test_point_2"]=value5["test_point_2"];
+											                  value1["Mode_data"][k]["test_point_5"]=value5["test_point_5"];
+											                  value1["Mode_data"][k]["test_point_6"]=value5["test_point_6"];
+											                  value1["Mode_data"][k]["test_point_7_V"]=value5["test_point_7_V"];
+											                  value1["Mode_data"][k]["test_point_7_V2"]=value5["test_point_7_V2"];
+											                  value1["Mode_data"][k]["number_of_pulse"]=value5["number_of_pulse"];
+											                  value1["Mode_data"][k]["not_ok_column"]=value5["not_ok_column"];
+											                  value1["Mode_data"][k]["not_ok_columns"]=value5["not_ok_columns"];
+											                  value1["Mode_data"][k]["token"]=value5["token"];
+											                  value1["Mode_data"][k]["username"]=value5["username"];
+											                  value1["Mode_data"][k]["test_case_name"]=value5["test_case_name"];
+														}
 													});
 												}
 											});
@@ -85,15 +118,15 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 						// toastr.error(result.message, 'Sorry!');
 				}
 
-				setTimeout(function(){
-					rpc.getReportList();
-				},5000);
+				// setTimeout(function(){
+				// 	rpc.getReportList();
+				// },5000);
 
 			});
 		}
 		rpc.getReportList();
 
-		rpc.download=function(type){
+		rpc.download=function(type,projectId){
 			if(rpc.reportList.length > 0){
 				var req={
 								"date":rpc.filterDate !=''?rpc.filterDate:-1,
@@ -102,7 +135,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 								"type":type
 				}
 
-				var promise = services.download(req);
+				var promise = services.download(req,projectId);
 				// promise.success(function (result) {
 						// Utility.stopAnimation();
 					// if(result.status_code == 200){
@@ -146,20 +179,23 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 
 		rpc.checkIfExist=function(key,arr,value=null){
 			// debugger;
-			if(arr.indexOf(key) !== -1) {
-			  	// console.log('key exists!');
-			  	return false;
-			}else if(key == "status"){
-				if(value == "NOT OK"){
-					return false;
+			if(arr.length > 0){
+				if(arr.indexOf(key) !== -1) {
+				  	// console.log('key exists!');
+				  	return false;
+				}else if(key == "status"){
+					if(value == "NOT OK"){
+						return false;
+					}else{
+						return true;
+					}
+					// ng-class="{ok: value.status == 'OK', not_ok: value.status != 'OK'}"
 				}else{
+					// console.log('key not exists!');
 					return true;
 				}
-				// ng-class="{ok: value.status == 'OK', not_ok: value.status != 'OK'}"
-			}else{
-				// console.log('key not exists!');
-				return true;
 			}
+			
 		}
 
         $scope.exportToExcel=function(tableId,index,project_id){ // ex: '#my-table'

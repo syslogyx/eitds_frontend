@@ -365,9 +365,9 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
             }
         })
     };
-    this.download = function (request) {
+    this.download = function (request,productId) {
         // var win =
-        window.open(RESOURCES.SERVER_API +'report/download/'+request.user_id+'/'+request.date+'/'+request.product_id+'/'+request.type);
+        window.open(RESOURCES.SERVER_API +'report/download/'+request.user_id+'/'+request.date+'/'+request.product_id+'/'+request.type+'?product_id='+productId);
         // win.setTimeout(function(){this.close();},1500)
         // win.focus();
     };

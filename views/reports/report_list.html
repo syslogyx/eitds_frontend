@@ -143,7 +143,7 @@
                         <div class="col-md-6" ng-show="rpc.reportList.length > 0">
                             <div class="pull-right">
                               <input type="checkbox" data-toggle="toggle" id="toggle-switch" data-onstyle="success" data-offstyle="danger" >
-                                <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF');" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
+                                <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF',0);" style="outline: 0;display: none;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                 <!-- <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>
 
@@ -170,8 +170,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="pull-right">
+                                        <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF',product_data.project_id);" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                         <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table',$index, product_data.project_id);" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                         </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +300,7 @@
                                 </tbody>
                             <!-- </div> -->
 
-                            <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength && rpc.sequece">
+                                <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength && rpc.sequece">
                                 <!-- test case 1 -->
                                 <!-- <tr> -->
                                     <tr>
@@ -377,109 +379,94 @@
                                         <td ng-if="rpc.checkIfExist('created_at',value.not_ok_columns)"> {{value.created_at}}</td>
                                         <th  class="red" ng-if="!rpc.checkIfExist('created_at',value.not_ok_columns)"> {{value.created_at}}</th>
                                     </tr>
-                                <!-- </tr> -->
-                            </tbody>
+                                    <!-- </tr> -->
+                                </tbody>
                         <!-- </div> -->
                         </table>
 
                         <div style="display: none;">
                             <table class="table table-condensed table-bordered"  id="hidden_table_{{$index}}">
-                              <thead class="thead-default">
-                                  <tr >
-                                      <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}"  style="text-align: center;vertical-align: middle;">Product ID </th>
-                                      <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}"  style="text-align: center;vertical-align: middle;">'{{product_data.project_id}}'</th>
-                                      <th colspan="{{rpc.columnList.selected_columns.length-9}}"  style="text-align: center;vertical-align: middle;">{{rpc.columnList.header_heading}}</th>
-                                      <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}" style="text-align: center;vertical-align: middle;">Date </th>
-                                      <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}" style="text-align: center;vertical-align: middle;">{{rpc.currentDate}}</th>
-                                  </tr>
-                                  <tr>
-                                      <th colspan="{{rpc.columnList.selected_columns.length-1}}"  style="text-align: center;vertical-align: middle;">Functional Tests</th>
+                                <thead class="thead-default">
+                                    <tr >
+                                        <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}"  style="text-align: center;vertical-align: middle;">Product ID </th>
+                                        <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}"  style="text-align: center;vertical-align: middle;">'{{product_data.project_id}}'</th>
+                                        <th colspan="{{rpc.columnList.selected_columns.length-9}}"  style="text-align: center;vertical-align: middle;">{{rpc.columnList.header_heading}}</th>
+                                        <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}" style="text-align: center;vertical-align: middle;">Date </th>
+                                        <th colspan="{{rpc.columnList.selected_columns.length-(rpc.columnList.selected_columns.length-2)}}" style="text-align: center;vertical-align: middle;">{{rpc.currentDate}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="{{rpc.columnList.selected_columns.length-1}}"  style="text-align: center;vertical-align: middle;">Functional Tests</th>
 
-                                  </tr>
-                              </thead>
+                                    </tr>
+                                  </thead>
+                                  <pre>{{rpc.columnList.selected_columns}}</pre>
                                 <thead class="thead-default">
                                     <tr>
-                                        <th ng-repeat="col_data in rpc.columnList.selected_columns track by $index" ng-if="col_data.column_display_name != 'Final Status (OK/NOT OK)'" style="text-align: center;vertical-align: middle;">{{col_data.column_display_name}}</th>
+                                        <th ng-repeat="col_data in rpc.columnList.selected_columns track by $index" ng-if="col_data.column_name != 'status' && col_data.column_name != 'Valid_for_Modes' && col_data.column_name != 'Output' && col_data.column_name != 'test_point_2' && col_data.column_name != 'test_point_5' && col_data.column_name != 'test_point_6' && col_data.column_name != 'date'" style="text-align: center;vertical-align: middle;">{{col_data.column_display_name}}</th>
                                     </tr>
                                 </thead>
                                 <!-- <pre>{{product_data |json}}</pre> -->
                                 <!-- <div> -->
-                                    <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength">
+                                  
+                                        <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength">
                                         <!-- test case 1 -->
                                         <!-- <tr> -->
-                                            <tr>
-                                                <td rowspan="{{(test_case['mode_length']*2)}}"> TC#{{test_case['Test Case']}}</td>
-                                                <td rowspan="{{(test_case['mode_length']*2)}}">{{test_case['Test Condition']}}</td>
-                                                <td rowspan="{{(test_case['mode_length']*2)}}">{{test_case['Valid for Modes']}}</td>
+                                            <tr ng-repeat="mode_data in test_case.Mode_data">
+                                                <td ng-if="$first" rowspan="{{(test_case['mode_length'])}}"> TC#{{test_case['Test Case']}}</td>
+                                                <td ng-if="$first" rowspan="{{(test_case['mode_length'])}}">{{test_case['Test Condition']}}</td>
 
-                                                <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['mode_name']}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['Time (ms)']}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['Voltage (V)']}}</td>
-                                                <th ng-if="test_case['mode_length'] > 0" style="color:black">Expected</th>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_time}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_time}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_1_voltage}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_2}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_voltage}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].number_of_pulse}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_high}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_pulse_low}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_voltage}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_5}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_6}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V}}</td>
-                                                <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V2}}</td>
+                                                <td >{{mode_data['mode_name']}}</td>
+                                                <td >{{mode_data['Time (ms)']}}</td>
+                                                <td >{{mode_data['Voltage (V)']}}</td>
+
+                                                <td ng-if="rpc.checkIfExist('test_point_3_time',mode_data['not_ok_columns'])"> {{mode_data['test_point_3_time']}}/<b>{{mode_data['Expected'].test_point_3_time}}</b></td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_3_time',mode_data['not_ok_columns'])"> {{mode_data['test_point_3_time']}}/{{mode_data['Expected'].test_point_3_time}}</th>
+
+                                                <td ng-if="rpc.checkIfExist('test_point_4_time',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_time']}}/{{mode_data['Expected'].test_point_4_time}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_time',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_time']}}/{{mode_data['Expected'].test_point_4_time}}</th>
+
+                                                <td ng-if="rpc.checkIfExist('test_point_1_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_1_voltage']}}/{{mode_data['Expected'].test_point_1_voltage}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_1_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_1_voltage']}}/{{mode_data['Expected'].test_point_1_voltage}}</th>
+                                               
+                                                <td ng-if="rpc.checkIfExist('test_point_3_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_3_voltage']}}/{{mode_data['Expected'].test_point_3_voltage}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_3_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_3_voltage']}}/{{mode_data['Expected'].test_point_3_voltage}}</th>
+
+                                                <td ng-if="rpc.checkIfExist('number_of_pulse',mode_data['not_ok_columns'])"> {{mode_data['number_of_pulse']}}/{{mode_data['Expected'].number_of_pulse}}</td>
+                                                <th ng-if="!rpc.checkIfExist('number_of_pulse',mode_data['not_ok_columns'])"> {{mode_data['number_of_pulse']}}/{{mode_data['Expected'].number_of_pulse}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_4_pulse_high',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_pulse_high']}}/{{mode_data['Expected'].test_point_4_pulse_high}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_pulse_high',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_pulse_high']}}/{{mode_data['Expected'].test_point_4_pulse_high}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_4_pulse_low',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_pulse_low']}}/{{mode_data['Expected'].test_point_4_pulse_low}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_pulse_low',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_pulse_low']}}/{{mode_data['Expected'].test_point_4_pulse_low}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_4_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_voltage']}}/{{mode_data['Expected'].test_point_4_voltage}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_4_voltage']}}/{{mode_data['Expected'].test_point_4_voltage}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_7_V',mode_data['not_ok_columns'])"> {{mode_data['test_point_7_V']}}/{{mode_data['Expected'].test_point_7_V}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_7_V',mode_data['not_ok_columns'])"> {{mode_data['test_point_7_V']}}/{{mode_data['Expected'].test_point_7_V}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_7_V2',mode_data['not_ok_columns'])"> {{mode_data['test_point_7_V2']}}/{{mode_data['Expected'].test_point_7_V2}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_7_V2',mode_data['not_ok_columns'])"> {{mode_data['test_point_7_V2']}}/{{mode_data['Expected'].test_point_7_V2}}</th>
                                             </tr>
-                                            <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0">
-                                                <td rowspan="2" >{{mode_data['mode_name']}}</td>
-                                                <td rowspan="2" >{{mode_data['Time (ms)']}}</td>
-                                                <td rowspan="2" >{{mode_data['Voltage (V)']}}</td>
-                                                <th style="color:black">Expected</th>
-                                                <td> {{mode_data['Expected'].test_point_3_time}}</td>
-                                                <td> {{mode_data['Expected'].test_point_4_time}}</td>
-                                                <td> {{mode_data['Expected'].test_point_1_voltage}}</td>
-                                                <td> {{mode_data['Expected'].test_point_2}}</td>
-                                                <td> {{mode_data['Expected'].test_point_3_voltage}}</td>
-                                                <td> {{mode_data['Expected'].number_of_pulse}}</td>
-                                                <td> {{mode_data['Expected'].test_point_4_pulse_high}}</td>
-                                                <td> {{mode_data['Expected'].test_point_4_pulse_low}}</td>
-                                                <td> {{mode_data['Expected'].test_point_4_voltage}}</td>
-                                                <td> {{mode_data['Expected'].test_point_5}}</td>
-                                                <td> {{mode_data['Expected'].test_point_6}}</td>
-                                                <td> {{mode_data['Expected'].test_point_7_V}}</td>
-                                                <td> {{mode_data['Expected'].test_point_7_V2}}</td>
-                                            </tr>
-                                            <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']" ng-if="$last">
-                                                <th style="color:black">Actual</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_4_time',value.not_ok_columns)"> {{value.test_point_4_time}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_4_time',value.not_ok_columns)"> {{value.test_point_4_time}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_1_voltage',value.not_ok_columns)"> {{value.test_point_1_voltage}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_1_voltage',value.not_ok_columns)"> {{value.test_point_1_voltage}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_2',value.not_ok_columns)"> {{value.test_point_2}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_2',value.not_ok_columns)"> {{value.test_point_2}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_3_voltage',value.not_ok_columns)"> {{value.test_point_3_voltage}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_3_voltage',value.not_ok_columns)"> {{value.test_point_3_voltage}}</th>
-                                                <td ng-if="rpc.checkIfExist('number_of_pulse',value.not_ok_columns)"> {{value.number_of_pulse}}</td>
-                                                <th ng-if="!rpc.checkIfExist('number_of_pulse',value.not_ok_columns)"> {{value.number_of_pulse}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_4_pulse_high',value.not_ok_columns)"> {{value.test_point_4_pulse_high}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_4_pulse_high',value.not_ok_columns)"> {{value.test_point_4_pulse_high}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_4_pulse_low',value.not_ok_columns)"> {{value.test_point_4_pulse_low}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_4_pulse_low',value.not_ok_columns)"> {{value.test_point_4_pulse_low}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_4_voltage',value.not_ok_columns)"> {{value.test_point_4_voltage}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_4_voltage',value.not_ok_columns)"> {{value.test_point_4_voltage}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_5',value.not_ok_columns)"> {{value.test_point_5}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_5',value.not_ok_columns)"> {{value.test_point_5}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_6',value.not_ok_columns)"> {{value.test_point_6}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_6',value.not_ok_columns)"> {{value.test_point_6}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_7_V',value.not_ok_columns)"> {{value.test_point_7_V}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_7_V',value.not_ok_columns)"> {{value.test_point_7_V}}</th>
-                                                <td ng-if="rpc.checkIfExist('test_point_7_V2',value.not_ok_columns)"> {{value.test_point_7_V2}}</td>
-                                                <th ng-if="!rpc.checkIfExist('test_point_7_V2',value.not_ok_columns)"> {{value.test_point_7_V2}}</th>
-                                                <td ng-if="rpc.checkIfExist('created_at',value.not_ok_columns)"> {{value.created_at}}</td>
-                                                <th ng-if="!rpc.checkIfExist('created_at',value.not_ok_columns)"> {{value.created_at}}</th>
-                                            </tr>
+                                            <!-- <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']" ng-if="$last">
+                                                <td ng-if="rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}/{{mode_data['Expected'].test_point_3_time}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}/{{mode_data['Expected'].test_point_3_time}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_4_time',value.not_ok_columns)"> {{value.test_point_4_time}}/{{mode_data['Expected'].test_point_4_time}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_time',value.not_ok_columns)"> {{value.test_point_4_time}}/{{mode_data['Expected'].test_point_4_time}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_1_voltage',value.not_ok_columns)"> {{value.test_point_1_voltage}}/{{mode_data['Expected'].test_point_1_voltage}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_1_voltage',value.not_ok_columns)"> {{value.test_point_1_voltage}}/{{mode_data['Expected'].test_point_1_voltage}}</th>
+                                               
+                                                <td ng-if="rpc.checkIfExist('test_point_3_voltage',value.not_ok_columns)"> {{value.test_point_3_voltage}}/{{mode_data['Expected'].test_point_3_voltage}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_3_voltage',value.not_ok_columns)"> {{value.test_point_3_voltage}}/{{mode_data['Expected'].test_point_3_voltage}}</th>
+                                                <td ng-if="rpc.checkIfExist('number_of_pulse',value.not_ok_columns)"> {{value.number_of_pulse}}/{{mode_data['Expected'].number_of_pulse}}</td>
+                                                <th ng-if="!rpc.checkIfExist('number_of_pulse',value.not_ok_columns)"> {{value.number_of_pulse}}/{{mode_data['Expected'].number_of_pulse}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_4_pulse_high',value.not_ok_columns)"> {{value.test_point_4_pulse_high}}/{{mode_data['Expected'].test_point_4_pulse_high}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_pulse_high',value.not_ok_columns)"> {{value.test_point_4_pulse_high}}/{{mode_data['Expected'].test_point_4_pulse_high}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_4_pulse_low',value.not_ok_columns)"> {{value.test_point_4_pulse_low}}/{{mode_data['Expected'].test_point_4_pulse_low}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_pulse_low',value.not_ok_columns)"> {{value.test_point_4_pulse_low}}/{{mode_data['Expected'].test_point_4_pulse_low}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_4_voltage',value.not_ok_columns)"> {{value.test_point_4_voltage}}/{{mode_data['Expected'].test_point_4_voltage}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_4_voltage',value.not_ok_columns)"> {{value.test_point_4_voltage}}/{{mode_data['Expected'].test_point_4_voltage}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_7_V',value.not_ok_columns)"> {{value.test_point_7_V}}/{{mode_data['Expected'].test_point_7_V}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_7_V',value.not_ok_columns)"> {{value.test_point_7_V}}/{{mode_data['Expected'].test_point_7_V}}</th>
+                                                <td ng-if="rpc.checkIfExist('test_point_7_V2',value.not_ok_columns)"> {{value.test_point_7_V2}}/{{mode_data['Expected'].test_point_7_V2}}</td>
+                                                <th ng-if="!rpc.checkIfExist('test_point_7_V2',value.not_ok_columns)"> {{value.test_point_7_V2}}/{{mode_data['Expected'].test_point_7_V2}}</th>
+                                            </tr> -->
                                         <!-- </tr> -->
                                     </tbody>
                                 <!-- </div> -->
