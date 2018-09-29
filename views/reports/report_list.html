@@ -304,9 +304,9 @@
                                 <!-- test case 1 -->
                                 <!-- <tr> -->
                                     <tr>
-                                        <td rowspan="{{(test_case['mode_length'] * 2)}}"> TC#{{test_case['Test Case']}}</td>
-                                        <td rowspan="{{(test_case['mode_length'] * 2)}}">{{test_case['Test Condition']}}</td>
-                                        <td rowspan="{{(test_case['mode_length'] * 2)}}">{{test_case['Valid for Modes']}}</td>
+                                        <td rowspan="{{test_case['mode_length']*2 }}"> TC#{{test_case['Test Case']}}</td>
+                                        <td rowspan="{{test_case['mode_length']*2}}">{{test_case['Test Condition']}}</td>
+                                        <td rowspan="{{test_case['mode_length']*2 }}">{{test_case['Valid for Modes']}}</td>
 
 
                                         <td rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" ng-if="test_case['mode_length'] > 0" >{{test_case.Mode_data[0]['mode_name']}}</td>
