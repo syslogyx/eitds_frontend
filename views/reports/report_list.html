@@ -387,43 +387,43 @@
                         <div style="display: none;">
                             <table class="table table-condensed table-bordered"  id="hidden_table_{{$index}}">
                                 <thead class="thead-default">
-                                    <tr>
+                                    <!-- <tr>
                                         <th>
-                                            <img src="http://eitdsapi.syslogyx.com/img/1538054261.png">
+                                          <img src="http://eitdsapi.syslogyx.com/img/1538054261.png" width="150" height="35"/>
                                         </th>
+                                    </tr> -->
+                                    <tr>
+                                        <th  colspan="2" style="text-align:center;padding: 0px"><h4>Product Id : </h4></th>
+                                        <th  colspan="2" style="text-align:center;padding: 0px"><h4>{{product_data.project_id}}</h4></th>
+                                        <th  colspan="7" style="text-align:center;padding: 0px"><h4>EITDS v2.0</h4></th>
+                                        <th  colspan="2" style="text-align:center;padding: 0px"><h4>Report Date : </h4></th>
+                                        <th  colspan="2" style="text-align:center;padding: 0px"><h4>{{rpc.currentDate}}</h4></th>
                                     </tr>
                                     <tr>
-                                        <th  colspan="2" style="border:1px solid;text-align:center;padding: 0px"><h4>Product Id : </h4></th>
-                                        <th  colspan="2" style="border:1px solid;text-align:center;padding: 0px"><h4>{{product_data.project_id}}</h4></th>
-                                        <th  colspan="7" style="border:1px solid;text-align:center;padding: 0px"><h4>EITDS v2.0</h4></th>
-                                        <th  colspan="2" style="border:1px solid;text-align:center;padding: 0px"><h4>Report Date : </h4></th>
-                                        <th  colspan="2" style="border:1px solid;text-align:center;padding: 0px"><h4>{{rpc.currentDate}}</h4></th>
+                                        <th  colspan="15" style="text-align:center;padding: 0px"><h4>FUNCTIONAL TESTS</h4></th>
                                     </tr>
                                     <tr>
-                                        <th  colspan="15" style="border:1px solid;text-align:center;padding: 0px"><h4>FUNCTIONAL TESTS</h4></th>
+                                        <th rowspan="2" style="text-align: center;vertical-align: middle;padding: 0px">Test Case</th>
+                                        <th rowspan="2" style="text-align: center;vertical-align: middle;padding: 0px">Test Condition</th>
+                                        <th rowspan="2" style="text-align: center;vertical-align: middle;padding: 0px">Mode</th>
+                                        <th rowspan="2" style=";text-align: center;vertical-align: middle;padding: 0px">Time (ms)</th>
+                                        <th rowspan="2" style="text-align: center;vertical-align: middle;padding: 0px">Voltage (V)</th>
+                                        <th colspan="10" style="text-align: center;vertical-align: middle;padding: 0px">Actual Output / Expected Output</th>
                                     </tr>
                                     <tr>
-                                        <th rowspan="2" style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">Test Case</th>
-                                        <th rowspan="2" style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">Test Condition</th>
-                                        <th rowspan="2" style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">Mode</th>
-                                        <th rowspan="2" style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">Time (ms)</th>
-                                        <th rowspan="2" style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">Voltage (V)</th>
-                                        <th colspan="10" style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">Actual Output / Expected Output</th>
-                                    </tr>
-                                    <tr>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP3_T</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP4_T</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP1_V</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP3_V</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">No. of Pulses</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP4_Width</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP4_Gap</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP4_V</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP7_V</th>
-                                        <th style="border:1px solid;text-align: center;vertical-align: middle;padding: 0px">TP7_V2</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP3_T</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP4_T</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP1_V</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP3_V</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">No. of Pulses</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP4_Width</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP4_Gap</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP4_V</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP7_V</th>
+                                        <th style="text-align: center;vertical-align: middle;padding: 0px">TP7_V2</th>
                                     </tr>
                                 </thead>
-          
+
                                 <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength">
                                     <tr ng-repeat="mode_data in test_case.Mode_data">
                                         <td ng-if="$first" rowspan="{{(test_case['mode_length'])}}"> TC#{{test_case['Test Case']}}</td>
@@ -441,7 +441,7 @@
 
                                         <td ng-if="rpc.checkIfExist('test_point_1_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_1_voltage']}}/<b>{{mode_data['Expected'].test_point_1_voltage}}</b></td>
                                         <th ng-if="!rpc.checkIfExist('test_point_1_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_1_voltage']}}/<b>{{mode_data['Expected'].test_point_1_voltage}}</b></th>
-                                               
+
                                         <td ng-if="rpc.checkIfExist('test_point_3_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_3_voltage']}}/<b>{{mode_data['Expected'].test_point_3_voltage}}</b></td>
                                         <th ng-if="!rpc.checkIfExist('test_point_3_voltage',mode_data['not_ok_columns'])"> {{mode_data['test_point_3_voltage']}}/<b>{{mode_data['Expected'].test_point_3_voltage}}</b></th>
 
@@ -466,31 +466,31 @@
                                     </tr>
                                 </tbody>
                                 <tbody>
-                                    <tr style="border:1px solid">
-                                        <td style="border:1px solid" colspan="15"></td>
+                                    <tr>
+                                        <td colspan="15"></td>
                                     </tr>
-                                    <tr style="border:1px solid">
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4">Tested By</td>
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4">Verified By</td>
-                                        <td  style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4">Approved By</td>
+                                    <tr>
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4">Tested By</td>
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4">Verified By</td>
+                                        <td  style="text-align: center;vertical-align: middle;" colspan="4">Approved By</td>
 
                                         <td rowspan="4" style="border:1px solid;text-align: center;vertical-align: middle;" colspan="3"> <div style="color:#adacac">Company Seal</div>   </td>
                                     </tr>
-                                    <tr  rowspan="2" style="border:1px solid" height="25px">
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4"> <div style="color:#adacac">(Signature)</div> </td>
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;"  colspan="4"> <div style="color:#adacac">(Signature)</div>  </td>
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;"  colspan="4"> <div style="color:#adacac">(Signature)</div>  </td>
+                                    <tr  rowspan="2" height="25px">
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4"> <div style="color:#adacac">(Signature)</div> </td>
+                                        <td style="text-align: center;vertical-align: middle;"  colspan="4"> <div style="color:#adacac">(Signature)</div>  </td>
+                                        <td style="text-align: center;vertical-align: middle;"  colspan="4"> <div style="color:#adacac">(Signature)</div>  </td>
 
                                     </tr>
-                                    <tr style="border:1px solid">
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Name)</div> </td>
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Name)</div> </td>
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Name)</div> </td>
+                                    <tr >
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Name)</div> </td>
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Name)</div> </td>
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Name)</div> </td>
                                     </tr>
-                                    <tr style="border:1px solid">
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Designation)</div> </td>
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Designation)</div> </td>
-                                        <td style="border:1px solid;text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Designation)</div> </td>
+                                    <tr>
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Designation)</div> </td>
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Designation)</div> </td>
+                                        <td style="text-align: center;vertical-align: middle;" colspan="4"><div style="color:#adacac">(Designation)</div> </td>
                                     </tr>
                                 </tbody>
                             </table>

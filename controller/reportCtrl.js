@@ -118,9 +118,9 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 						// toastr.error(result.message, 'Sorry!');
 				}
 
-				// setTimeout(function(){
-				// 	rpc.getReportList();
-				// },5000);
+				setTimeout(function(){
+					rpc.getReportList();
+				},5000);
 
 			});
 		}
@@ -195,7 +195,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 					return true;
 				}
 			}
-			
+
 		}
 
         $scope.exportToExcel=function(tableId,index,project_id){ // ex: '#my-table'
