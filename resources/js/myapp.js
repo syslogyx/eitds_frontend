@@ -68,7 +68,6 @@ app.filter('reverse', function() {
 });
 
 app.directive('exportToPdf', function(){
-
    return {
        restrict: 'E',
        scope: {
@@ -94,6 +93,23 @@ app.directive('exportToPdf', function(){
        }
    }
 
+});
+
+/**
+ **  This Directive used to apply fixheader.
+ **/
+app.directive('fixHeader', function () {
+    return function (scope, element, attrs) {
+        if (scope.$last) {
+            $(".fixTable").tableHeadFixer({
+                head: true,
+                foot: false,
+                left: 3,
+                right: 0,
+                'z-index': 0
+            })
+        }
+    };
 });
 
 app.factory("menuService", ["$rootScope", function ($rootScope) {
