@@ -138,7 +138,7 @@
                         <div class="col-md-12">
                         <div class="col-md-6">
                             <h1 class="formheading">
-                                  Count ({{rpc.reportList.length}})
+                                  Count ({{rpc.reportTotalCount}})
                             </h1>
                         </div>
 
@@ -311,9 +311,9 @@
                                         <!-- <td rowspan="{{test_case['mode_length']*2 }}">{{test_case['Valid for Modes']}}</td> -->
 
 
-                                        <td rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" ng-if="test_case['mode_length'] > 0" >{{test_case.Mode_data[0]['mode_name']}}</td>
-                                        <td ng-if="test_case['mode_length'] > 0" rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" >{{test_case.Mode_data[0]['Time (ms)']}}</td>
-                                        <td ng-if="test_case['mode_length'] > 0" rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" >{{test_case.Mode_data[0]['Voltage (V)']}}</td>
+                                        <td rowspan="2" ng-if="test_case['mode_length'] > 0" >{{test_case.Mode_data[0]['mode_name']}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['Time (ms)']}}</td>
+                                        <td ng-if="test_case['mode_length'] > 0" rowspan="2" >{{test_case.Mode_data[0]['Voltage (V)']}}</td>
                                         <th ng-if="test_case['mode_length'] > 0" style="color:black">Expected</th>
                                         <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_3_time}}</td>
                                         <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_4_time}}</td>
@@ -396,14 +396,14 @@
                                         style="border:1px solid;text-align:center;padding: 0px;vertical-align:middle"
                                     </tr> -->
                                     <tr>
-                                        <th  colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>Product Id : </h4></th>
-                                        <th  colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>{{product_data.project_id}}</h4></th>
-                                        <th  colspan="7" style="text-align:center;padding: 0px;border:1px solid;"><h4>EITDS v2.0</h4></th>
-                                        <th  colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>Report Date : </h4></th>
-                                        <th  colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>{{rpc.currentDate}}</h4></th>
+                                        <th colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>Product Id : </h4></th>
+                                        <th colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>{{product_data.project_id}}</h4></th>
+                                        <th colspan="7" style="text-align:center;padding: 0px;border:1px solid;"><h4>EITDS v2.0</h4></th>
+                                        <th colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>Report Date : </h4></th>
+                                        <th colspan="2" style="text-align:center;padding: 0px;border:1px solid;"><h4>{{rpc.currentDate}}</h4></th>
                                     </tr>
                                     <tr>
-                                        <th  colspan="15" style="text-align:center;padding: 0px;border:1px solid;"><h4>FUNCTIONAL TESTS</h4></th>
+                                        <th colspan="15" style="text-align:center;padding: 0px;border:1px solid;"><h4>FUNCTIONAL TESTS</h4></th>
                                     </tr>
                                     <tr>
                                         <th rowspan="2" style="text-align: center;vertical-align: middle;padding: 0px;border:1px solid;">Test Case</th>

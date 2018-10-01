@@ -63,6 +63,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				if(result.status_code == 200){
 					// Utility.stopAnimation();
 					rpc.reportList = result.data;
+					rpc.reportTotalCount = result.total;
 					pagination.applyPagination(result, rpc);
 					rpc.columnList = result.columnList;
 					rpc.data = [];
