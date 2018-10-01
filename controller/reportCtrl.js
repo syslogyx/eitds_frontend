@@ -1,4 +1,4 @@
-app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,Excel,$timeout) {
+app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,Excel,$timeout,pagination) {
 
 	var rpc = this;
 	rpc.currentDate=Utility.formatDate(new Date());
@@ -22,9 +22,29 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 		$scope.isChecked=function(status){
 				rpc.sequece=status;
 		}
-		rpc.getReportList=function(){
 
-			var req={};
+		rpc.fetchList = function(page){
+	        rpc.limit = 10;
+	        if(rpc.limit == undefined){
+	            rpc.limit = -1;
+	        }
+	        if(page == -1){
+	            rpc.pageno = 1;
+	            console.log($('#pagination-sec').data("twbs-pagination"));
+	            if($('#pagination-sec').data("twbs-pagination")){
+	                    $('#pagination-sec').twbsPagination('destroy');
+	            }
+	        }
+	        else{
+	            rpc.pageno = page;
+	        }
+	        var requestParam = {
+	            page:rpc.pageno,
+	            // limit:pagination.getpaginationLimit(),
+	            limit:rpc.limit,
+	        }
+
+	        var req={};
 			if(rpc.filterDate != ''){
 				req.date=rpc.filterDate;
 			}
@@ -37,11 +57,13 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 			if(loggedInUser.identity.role!=1){
 				req.user_id=loggedInUser.id;
 			}
-			var promise = services.getReportList(req);
+
+	        var promise = services.getReportList(req,requestParam);
 			promise.success(function (result) {
 				if(result.status_code == 200){
 					// Utility.stopAnimation();
 					rpc.reportList = result.data;
+					pagination.applyPagination(result, rpc);
 					rpc.columnList = result.columnList;
 					rpc.data = [];
 					for(var i=0; i<rpc.reportList.length; i++){
@@ -134,6 +156,10 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				//},5000);
 
 			});
+	    }
+
+		rpc.getReportList=function(){
+			rpc.fetchList(-1);
 		}
 		rpc.getReportList();
 

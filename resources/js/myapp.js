@@ -161,7 +161,40 @@ app.directive('ngFiles', ['$parse', function ($parse) {
     }
 } ])
 
+app.service('pagination', function (RESOURCES, $http, $cookieStore, $filter) {
+    //set pagination limit here
+    var paginationLimit = 10;
+    this.getpaginationLimit = function () {
+     return paginationLimit;
+    };
 
+    //apply pagination
+    this.applyPagination = function (pageData, ctrlscope, $source= null) {
+        console.log(pageData);
+        $('#pagination-sec').twbsPagination({
+            totalPages: pageData.lastPage,
+            visiblePages: 5,
+            first: '',
+            last: '',
+            onPageClick: function (event, page) {
+                console.log('Page: ' + page);
+                //tec.pageno = page;
+                if (ctrlscope.skip) {
+                    ctrlscope.skip = false;
+                    return;
+                }
+                //tec.search(page);
+                if($source != null){
+
+                }else{
+                    ctrlscope.fetchList(page,$source);
+                }
+                
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+        });
+    }
+});
 
 app.service('checkAuthentication', function (RESOURCES, $http, $cookieStore, $filter,services,AclService) {
     this.checkPermission=function(q,permission){
@@ -369,11 +402,18 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
             }
         })
     };
-    this.getReportList = function (request) {
+    this.getReportList = function (request,requestParam) {
+        if(requestParam == undefined){
+            page = -1;
+            limit = -1;
+        }else{
+            page = requestParam.page;
+            limit = requestParam.limit;
+        }
       //  Utility.startAnimation();
         return $http({
             method: 'POST',
-            url: RESOURCES.SERVER_API + "get/productHistoryByDateAndProductIdNew",
+            url: RESOURCES.SERVER_API + "get/productHistoryByDateAndProductIdNew?page=" + page + "&limit=" + limit,
             dataType: 'json',
             data: $.param(request),
             headers: {
