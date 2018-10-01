@@ -1,6 +1,11 @@
 var Utility = {
-    apiBaseUrl: "http://172.16.1.36:8000/api/",
-    imgBaseUrl: "http://172.16.1.36:8000/img/",
+
+    // apiBaseUrl: "http://172.16.1.36:8000/api/",
+    // imgBaseUrl: "http://172.16.1.36:8000/img/",
+
+    apiBaseUrl: "http://eitdsapi.syslogyx.com/api/",
+    imgBaseUrl: "http://eitdsapi.syslogyx.com/img/",
+
     formatDate: function (date, format) {
         var tDate = null;
         if (format == "Y/m/d") {
@@ -189,7 +194,7 @@ app.service('pagination', function (RESOURCES, $http, $cookieStore, $filter) {
                 }else{
                     ctrlscope.fetchList(page,$source);
                 }
-                
+
                 $("html, body").animate({ scrollTop: 0 }, "slow");
             }
         });
