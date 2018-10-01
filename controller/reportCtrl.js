@@ -120,9 +120,18 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 						// toastr.error(result.message, 'Sorry!');
 				}
 
-				// setTimeout(function(){
-				// 	rpc.getReportList();
-				// },5000);
+				setTimeout(function(){
+		            $(".fixTable").tableHeadFixer({
+		            head: true,
+		            foot: false,
+		            left: 3,
+		            right: 0,
+		            'z-index': 0
+		        });},500);
+
+				//setTimeout(function(){
+					//rpc.getReportList();
+				//},5000);
 
 			});
 		}

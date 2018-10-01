@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/resources/plugins/tableHeadFixer/tableHeadFixer.js"></script>
+<script type="text/javascript" src="/../../resources/plugins/tableHeadFixer/tableHeadFixer.js"></script>
 
 <style type="text/css">
 
@@ -28,6 +28,8 @@
                 min-width: 90px;
                 min-height: 34px;
             }
+
+
 
 
 </style>
@@ -186,45 +188,45 @@
 
                             <thead class="thead-default">
                                 <tr>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Case #</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Test Condition</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Valid for Modes</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Mode</th>
-                                    <th colspan="2" style="text-align: center;vertical-align: middle;">Accepted Tolerance</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Output</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP3_T</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP4_T</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP1_V</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP2</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP3_V</th>
-                                    <th colspan="4" style="text-align: center;vertical-align: middle;">TP4 (Firing Pulse)</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP5</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP6</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP7_V</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TP7_V2</th>
-                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Final Status (OK/NOT OK)</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Test Case #</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;width: 8%;">Test Condition</th>
+                                    <!-- <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Valid for Modes</th> -->
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Mode</th>
+                                    <th class="header-cell col1" colspan="2" style="text-align: center;vertical-align: middle;">Accepted Tolerance</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Output</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP3_T</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP4_T</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP1_V</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP2</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP3_V</th>
+                                    <th class="header-cell col1" colspan="4" style="text-align: center;vertical-align: middle;">TP4 (Firing Pulse)</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP5</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP6</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP7_V</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP7_V2</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Final Status (OK/NOT OK)</th>
                                     <th rowspan="2" style="text-align: center;vertical-align: middle;">DATE</th>
                                    <!--  <th>Action</th> -->
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;vertical-align: middle;">Time (ms)</th>
-                                    <th style="text-align: center;vertical-align: middle;">Voltage (V)</th>
-                                    <th style="text-align: center;vertical-align: middle;">No. of Pulses</th>
-                                    <th style="text-align: center;vertical-align: middle;">TP4_Width</th>
-                                    <th style="text-align: center;vertical-align: middle;">TP4_Gap</th>
-                                    <th style="text-align: center;vertical-align: middle;">TP4_V</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">Time (ms)</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">Voltage (V)</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">No. of Pulses</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">TP4_Width</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">TP4_Gap</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">TP4_V</th>
                                 </tr>
                             </thead>
                             <!-- <pre>{{product_data |json}}</pre> -->
                             <!-- <div> -->
-                                <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength && !rpc.sequece">
+                                <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength && !rpc.sequece" >
 
                                     <!-- test case 1 -->
                                     <!-- <tr> -->
                                         <tr>
                                             <td rowspan="{{test_case['mode_length']  + test_case['ActualLength'] }}"> TC#{{test_case['Test Case']}}</td>
                                             <td rowspan="{{test_case['mode_length']  + test_case['ActualLength'] }}">{{test_case['Test Condition']}}</td>
-                                            <td rowspan="{{test_case['mode_length']  + test_case['ActualLength'] }}">{{test_case['Valid for Modes']}}</td>
+                                            <!-- <td rowspan="{{test_case['mode_length']  + test_case['ActualLength'] }}">{{test_case['Valid for Modes']}}</td> -->
 
                                             <td rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" ng-if="test_case['mode_length'] > 0" >{{test_case.Mode_data[0]['mode_name']}}</td>
                                             <td ng-if="test_case['mode_length'] > 0" rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" >{{test_case.Mode_data[0]['Time (ms)']}}</td>
@@ -244,7 +246,7 @@
                                             <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V}}</td>
                                             <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V2}}</td>
                                         </tr>
-                                        <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0">
+                                        <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0" >
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['mode_name']}}</td>
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Time (ms)']}}</td>
                                             <td rowspan="{{mode_data['Actual'].length + 1}}" >{{mode_data['Voltage (V)']}}</td>
@@ -263,7 +265,7 @@
                                             <td> {{mode_data['Expected'].test_point_7_V}}</td>
                                             <td> {{mode_data['Expected'].test_point_7_V2}}</td>
                                         </tr>
-                                        <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']">
+                                        <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual']" >
                                             <th style="color:black">Actual</th>
                                             <td ng-if="rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</td>
                                             <th  class="red" ng-if="!rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</th>
@@ -300,13 +302,13 @@
                                 </tbody>
                             <!-- </div> -->
 
-                                <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength && rpc.sequece">
+                                <tbody ng-repeat="test_case in product_data.test_cases" ng-if="test_case.ActualLength && rpc.sequece" >
                                     <!-- test case 1 -->
                                     <!-- <tr> -->
                                     <tr>
                                         <td rowspan="{{test_case['mode_length']*2 }}"> TC#{{test_case['Test Case']}}</td>
                                         <td rowspan="{{test_case['mode_length']*2}}">{{test_case['Test Condition']}}</td>
-                                        <td rowspan="{{test_case['mode_length']*2 }}">{{test_case['Valid for Modes']}}</td>
+                                        <!-- <td rowspan="{{test_case['mode_length']*2 }}">{{test_case['Valid for Modes']}}</td> -->
 
 
                                         <td rowspan="{{test_case.Mode_data[0]['Actual'].length + 1}}" ng-if="test_case['mode_length'] > 0" >{{test_case.Mode_data[0]['mode_name']}}</td>
@@ -327,7 +329,7 @@
                                         <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V}}</td>
                                         <td ng-if="test_case['mode_length'] > 0"> {{test_case.Mode_data[0]['Expected'].test_point_7_V2}}</td>
                                     </tr>
-                                    <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0">
+                                    <tr ng-repeat-start="mode_data in test_case.Mode_data" ng-if="$index > 0" >
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['mode_name']}}</td>
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['Time (ms)']}}</td>
                                         <td rowspan="{{mode_data['Actual'].length>0?2:1}}" >{{mode_data['Voltage (V)']}}</td>
@@ -346,7 +348,7 @@
                                         <td> {{mode_data['Expected'].test_point_7_V}}</td>
                                         <td> {{mode_data['Expected'].test_point_7_V2}}</td>
                                     </tr>
-                                    <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual'] track by $index" ng-show="$last">
+                                    <tr ng-repeat-end ng-repeat="(key,value) in mode_data['Actual'] track by $index" ng-show="$last"  >
                                         <th style="color:black">Actual</th>
                                         <td ng-if="rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</td>
                                         <th  class="red" ng-if="!rpc.checkIfExist('test_point_3_time',value.not_ok_columns)"> {{value.test_point_3_time}}</th>
@@ -384,7 +386,7 @@
                         <!-- </div> -->
                         </table>
 
-                        <div style="display:none">
+                        <div style="display: none;">
                             <table class="table table-condensed table-bordered"  id="hidden_table_{{$index}}">
                                 <thead class="thead-default">
                                     <!-- <tr>
@@ -512,13 +514,6 @@
 
     $(document).ready(function () {
         $("html, body").animate({scrollTop: 0}, "fast");
-        $(".fixTable").tableHeadFixer({
-            head: true,
-            foot: false,
-            left: 1,
-            right: 0,
-            'z-index': 0
-        });
 
         //Date picker
         $('#filterDate').datepicker({
