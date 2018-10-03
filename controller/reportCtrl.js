@@ -1,6 +1,7 @@
 app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,Excel,$timeout,pagination) {
 
 	var rpc = this;
+	// var rstatus = false;
 	rpc.currentDate=Utility.formatDate(new Date());
 	rpc.statusList = [{
 		"id" : 1,
@@ -23,21 +24,24 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				rpc.sequece=status;
 		}
 
-	$(function(){
-		$('#toggle-switch-onoff').on('change',function() {
-              var refreshStatus=$(this).prop('checked');
-              console.log(refreshStatus);
-              	if(refreshStatus == true){				
-					setTimeout(function() {
-						rpc.getReportList();
-					},5000);
-				}
-        });
-	});
+		// $(function(){
+		// 	$('#toggle-switch-onoff').on('change',function() {
+	 //              var refreshStatus=$(this).prop('checked');
+	 //              console.log("refreshStatus>>"+refreshStatus);
+	 //              	if(refreshStatus == true){
+		// 				rstatus = true;
+		// 				rpc.isOnChecked();
+		// 			}
+	 //        });
+		// });
 		
-		// $scope.isOnChecked=function(status){
-		// 	console.log(status);
-			
+		// rpc.isOnChecked=function(){
+		// 	console.log(rstatus);
+		// 	if(rstatus == true){
+		// 		setTimeout(function() {
+		// 			rpc.getReportList();
+		// 		},5000);
+		// 	}
 		// }
 
 		rpc.fetchList = function(page){
