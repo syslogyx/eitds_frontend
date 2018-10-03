@@ -147,7 +147,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 		            $(".fixTable").tableHeadFixer({
 		            head: true,
 		            foot: false,
-		            left: 3,
+		            left: 6,
 		            right: 0,
 		            'z-index': 0
 		        });},500);

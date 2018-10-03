@@ -188,10 +188,10 @@
 
                             <thead class="thead-default">
                                 <tr>
-                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Test Case #</th>
-                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;width: 8%;">Test Condition</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;width: 3%;">Test Case #</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;width: 5%;">Test Condition</th>
                                     <!-- <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Valid for Modes</th> -->
-                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Mode</th>
+                                    <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;width: 5%">Mode</th>
                                     <th class="header-cell col1" colspan="2" style="text-align: center;vertical-align: middle;">Accepted Tolerance</th>
                                     <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">Output</th>
                                     <th class="header-cell col1" rowspan="2" style="text-align: center;vertical-align: middle;">TP3_T</th>
@@ -209,8 +209,8 @@
                                    <!--  <th>Action</th> -->
                                 </tr>
                                 <tr>
-                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">Time (ms)</th>
-                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;">Voltage (V)</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;width: 3%;">Time (ms)</th>
+                                    <th class="header-cell col1" style="text-align: center;vertical-align: middle;width: 3%;">Voltage (V)</th>
                                     <th class="header-cell col1" style="text-align: center;vertical-align: middle;">No. of Pulses</th>
                                     <th class="header-cell col1" style="text-align: center;vertical-align: middle;">TP4_Width</th>
                                     <th class="header-cell col1" style="text-align: center;vertical-align: middle;">TP4_Gap</th>
@@ -514,7 +514,7 @@
 
     $(document).ready(function () {
         $("html, body").animate({scrollTop: 0}, "fast");
-
+        $("#filterProductId").select2();
         //Date picker
         $('#filterDate').datepicker({
             autoclose: true,
