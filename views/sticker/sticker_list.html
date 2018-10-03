@@ -130,9 +130,9 @@
                         <thead>
                             <tr>
                                 <th style="text-align: center;">Sr No.</th>
-                                <th>ID</th>
+                                <!-- <th>ID</th> -->
                                 <th>Temp Id</th>
-                                <th>Series Name</th>
+                                <!-- <th>Series Name</th> -->
                                 <th>Final Id</th>
                             </tr>
                         </thead>
@@ -140,10 +140,10 @@
                         <tbody>
                             <tr ng-if="sti.stickerList.length > 0" ng-repeat="data in sti.stickerList">
                                 <td style="text-align: center;" ng-bind="($index + 1)"></td>
-                                <td>{{data.id}}</td>
+                                <!-- <td>{{data.id}}</td> -->
                                 <td>{{data.tempId}}</td>
-                                <td>{{data.seriesName}}</td>
-                                <td>{{data.finalId}}</td>
+                                <!-- <td>{{data.seriesName}}</td> -->
+                                <td>{{data.seriesName + data.finalId}}</td>
                             </tr>
                             <tr ng-if="sti.stickerList == null || sti.stickerList.length == 0">
                                 <td style="text-align: center;" colspan="5">No Records Found</td>
