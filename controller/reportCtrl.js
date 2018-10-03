@@ -23,6 +23,23 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				rpc.sequece=status;
 		}
 
+	$(function(){
+		$('#toggle-switch-onoff').on('change',function() {
+              var refreshStatus=$(this).prop('checked');
+              console.log(refreshStatus);
+              	if(refreshStatus == true){				
+					setTimeout(function() {
+						rpc.getReportList();
+					},5000);
+				}
+        });
+	});
+		
+		// $scope.isOnChecked=function(status){
+		// 	console.log(status);
+			
+		// }
+
 		rpc.fetchList = function(page){
 	        rpc.limit = 10;
 	        if(rpc.limit == undefined){

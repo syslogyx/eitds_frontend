@@ -9,7 +9,7 @@ app.controller('deviceCtrl', function ($scope,menuService,services,$cookieStore,
 		console.log('userId',dev.userId);
     var loggedInUser = JSON.parse(services.getIdentity());
 
-    //dev.userName = loggedInUser.identity.name;
+        //dev.userName = loggedInUser.identity.name;
 
 		if(dev.userId!=undefined && loggedInUser.identity.role==1){
 			var promise = services.getDeviceIdByUserId(dev.userId);
@@ -25,16 +25,20 @@ app.controller('deviceCtrl', function ($scope,menuService,services,$cookieStore,
 						dev.userDeviceId='';
 					}
 
-				}else{
+				}else if(result.status_code == 404){
+                    dev.userId=$location.search()['id'];
+                }else{
 					Utility.stopAnimation();
 						dev.userDeviceId='';
-							dev.userId=loggedInUser.id.toString();
+						dev.userId=loggedInUser.id.toString();
 						// toastr.error(result.message, 'Sorry!');
 				}
 			});
 		}else{
+            // console.log("on else");
 				dev.userId=undefined;
 		}
+
 
 		dev.init = function () {
 				var promise = services.getAllUserList();
@@ -42,7 +46,8 @@ app.controller('deviceCtrl', function ($scope,menuService,services,$cookieStore,
 					if(result.status_code == 200){
 						Utility.stopAnimation();
 							dev.userList = result.data;
-							dev.userName=dev.userId!=undefined?dev.userId:loggedInUser.id.toString();
+                            console.log(dev.userId);
+							dev.userName=dev.userId!=undefined ? dev.userId : loggedInUser.id.toString();
 					}else{
 						Utility.stopAnimation();
 							dev.userList = [];
