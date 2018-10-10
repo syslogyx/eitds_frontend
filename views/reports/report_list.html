@@ -26,6 +26,7 @@
             }
             .toggle.btn {
                 min-width: 90px;
+                /*min-width: 152px;*/
                 min-height: 34px;
             }
 
@@ -144,7 +145,8 @@
 
                         <div class="col-md-6" ng-show="rpc.reportList.length > 0">
                             <div class="pull-right">
-                              <input type="checkbox" data-toggle="toggle" id="toggle-switch" data-onstyle="success" data-offstyle="danger" >
+                                <!-- <input type="checkbox" data-toggle="toggle" id="toggle-switch-onoff" data-onstyle="success" data-offstyle="danger"> -->
+                                <input type="checkbox" data-toggle="toggle" id="toggle-switch" data-onstyle="success" data-offstyle="danger" >
                                 <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF',0);" style="outline: 0;display: none;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                 <!-- <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>
@@ -513,6 +515,7 @@
 <script>
 
     $(document).ready(function () {
+        
         $("html, body").animate({scrollTop: 0}, "fast");
         $("#filterProductId").select2();
         //Date picker
@@ -526,15 +529,19 @@
           off: 'Latest'
         });
 
+        // $('#toggle-switch-onoff').bootstrapToggle({
+        //   on: 'AutoRefresh ON',
+        //   off: 'AutoRefresh OFF'
+        // });
+
         $('#toggle-switch').change(function() {
           var status=$(this).prop('checked');
           var scope = angular.element(document.querySelector("#reportCtrl")).scope();
                scope.$apply(function () {
-
                    scope.isChecked(status);
                });
 
-        })
+        });
 
     });
 
