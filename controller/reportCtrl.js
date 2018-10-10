@@ -60,13 +60,15 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 
 	        var promise = services.getReportList(req,requestParam);
 			promise.success(function (result) {
+				rpc.reportList = result.data;
+				rpc.reportTotalCount = result.total;
+				rpc.columnList = result.columnList;
+				rpc.data = [];
+
 				if(result.status_code == 200){
 					// Utility.stopAnimation();
-					rpc.reportList = result.data;
-					rpc.reportTotalCount = result.total;
 					pagination.applyPagination(result, rpc);
-					rpc.columnList = result.columnList;
-					rpc.data = [];
+
 					for(var i=0; i<rpc.reportList.length; i++){
 						arr = {};
 						$.each( rpc.reportList[i], function( key, value ) {

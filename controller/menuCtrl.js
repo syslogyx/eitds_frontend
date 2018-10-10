@@ -65,7 +65,7 @@ $scope.menuClick=function(link){
     $scope.clearToken = function () {
 
         // $.removeCookie("authKey", { path: '/' });
-        $cookieStore.remove('authkey');
+        $cookieStore.remove('identity');
         $scope.init();
         window.location.href = "/site/login";
     }

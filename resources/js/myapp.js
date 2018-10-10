@@ -230,11 +230,11 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         var date = new Date();
         var minutes = 0.5;
         date.setTime(date.getTime() + (minutes * 60 * 1000));
-        $cookieStore.put('authkey', authkey, {expires: 60 * 60 * 1000, path: '/'});
+        $cookieStore.put('identity', authkey, {expires: 60 * 60 * 1000, path: '/'});
     }
 
     this.getAuthKey = function () {
-        return $cookieStore.get('authkey');
+        return $cookieStore.get('identity');
     }
 
     /*Login service*/
@@ -580,9 +580,9 @@ app.config(function ($routeProvider, $locationProvider) {
                 controllerAs: 'lgc',
                 resolve: {
                     'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
-                            var authKey = $cookieStore.get('authkey');
+                            var authKey = $cookieStore.get('identity');
                             if (authKey !== undefined) {
-                                $location.path('/');
+                                $location.path('/report/report_list');
                                 return true;
                             }
                         }]
