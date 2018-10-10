@@ -1,10 +1,10 @@
 var Utility = {
 
-    // apiBaseUrl: "http://172.16.1.36:8000/api/",
-    // imgBaseUrl: "http://172.16.1.36:8000/img/",
+    apiBaseUrl: "http://172.16.1.36:8000/api/",
+    imgBaseUrl: "http://172.16.1.36:8000/img/",
 
-    apiBaseUrl: "http://eitdsapi.syslogyx.com/api/",
-    imgBaseUrl: "http://eitdsapi.syslogyx.com/img/",
+    // apiBaseUrl: "http://eitdsapi.syslogyx.com/api/",
+    // imgBaseUrl: "http://eitdsapi.syslogyx.com/img/",
 
     formatDate: function (date, format) {
         var tDate = null;
@@ -415,7 +415,7 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
             page = requestParam.page;
             limit = requestParam.limit;
         }
-      //  Utility.startAnimation();
+       Utility.startAnimation();
         return $http({
             method: 'POST',
             url: RESOURCES.SERVER_API + "get/productHistoryByDateAndProductIdNew?page=" + page + "&limit=" + limit,

@@ -34,7 +34,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 		// 			}
 	 //        });
 		// });
-		
+
 		// rpc.isOnChecked=function(){
 		// 	console.log(rstatus);
 		// 	if(rstatus == true){
@@ -85,9 +85,9 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				rpc.reportTotalCount = result.total;
 				rpc.columnList = result.columnList;
 				rpc.data = [];
-
+	Utility.stopAnimation();
 				if(result.status_code == 200){
-					// Utility.stopAnimation();
+
 					pagination.applyPagination(result, rpc);
 
 					for(var i=0; i<rpc.reportList.length; i++){
@@ -161,7 +161,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 					}
 					console.log(rpc.data);
 				}else{
-					Utility.stopAnimation();
+					
 					rpc.reportList=[];
 						// toastr.error(result.message, 'Sorry!');
 				}
