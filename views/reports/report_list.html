@@ -30,7 +30,9 @@
                 min-height: 34px;
             }
 
-
+            .formheading {              
+              margin-left: 0px;
+            }
 
 
 </style>
@@ -43,10 +45,10 @@
     <div class="container-fluid" style="overflow-y: hidden;">
         <br>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-xs-6 col-sm-6">
                 <h4>Reports</h4>
             </div>
-            <div class="col-md-6" style="margin-top:1%;">
+            <div class="col-md-6col-md-6 col-xs-6 col-sm-6" style="margin-top:1%;">
                 <button type="button" data-toggle="collapse" data-target="#filterBox" class="btn btn-primary btn-circle btn-sm pull-right" title="Filter" style="outline: 0;margin-right:5px"><i class="fa fa-filter" aria-hidden="true"></i>
                 </button>
             </div>
@@ -134,16 +136,16 @@
 
         <div>
             <div class="box-header with-border paddingLeft0 marginBorderHead" style="background: white;">
-                <div class="formHeadDiv">
+                <div class="">
                     <div class="row">
-                        <div class="col-md-12">
-                        <div class="col-md-6">
+                        <div class="" ng-show="rpc.reportList.length > 0">
+                        <div class="col-md-6 col-xs-6 col-sm-6">
                             <h1 class="formheading">
                                   Count ({{rpc.reportTotalCount}})
                             </h1>
                         </div>
 
-                        <div class="col-md-6" ng-show="rpc.reportList.length > 0">
+                        <div class="col-md-6 col-xs-6 col-sm-6">
                             <div class="pull-right">
                                 <!-- <input type="checkbox" data-toggle="toggle" id="toggle-switch-onoff" data-onstyle="success" data-offstyle="danger"> -->
                                 <input type="checkbox" data-toggle="toggle" id="toggle-switch" data-onstyle="success" data-offstyle="danger" >
@@ -515,7 +517,7 @@
 <script>
 
     $(document).ready(function () {
-        
+
         $("html, body").animate({scrollTop: 0}, "fast");
         $("#filterProductId").select2();
         //Date picker

@@ -24,27 +24,10 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				rpc.sequece=status;
 		}
 
-		// $(function(){
-		// 	$('#toggle-switch-onoff').on('change',function() {
-	 //              var refreshStatus=$(this).prop('checked');
-	 //              console.log("refreshStatus>>"+refreshStatus);
-	 //              	if(refreshStatus == true){
-		// 				rstatus = true;
-		// 				rpc.isOnChecked();
-		// 			}
-	 //        });
-		// });
-
-		// rpc.isOnChecked=function(){
-		// 	console.log(rstatus);
-		// 	if(rstatus == true){
-		// 		setTimeout(function() {
-		// 			rpc.getReportList();
-		// 		},5000);
-		// 	}
-		// }
+	Utility.startAnimation();
 
 		rpc.fetchList = function(page){
+
 	        rpc.limit = 10;
 	        if(rpc.limit == undefined){
 	            rpc.limit = -1;
@@ -85,7 +68,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 				rpc.reportTotalCount = result.total;
 				rpc.columnList = result.columnList;
 				rpc.data = [];
-	Utility.stopAnimation();
+
 				if(result.status_code == 200){
 
 					pagination.applyPagination(result, rpc);
@@ -159,21 +142,34 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 						rpc.data.push(arr);
 
 					}
-					console.log(rpc.data);
+					if( navigator.userAgent.match(/Android/i)
+						 || navigator.userAgent.match(/webOS/i)
+						 || navigator.userAgent.match(/iPhone/i)
+						 || navigator.userAgent.match(/iPad/i)
+						 || navigator.userAgent.match(/iPod/i)
+						 || navigator.userAgent.match(/BlackBerry/i)
+						 || navigator.userAgent.match(/Windows Phone/i)){
+
+							 console.log('U R USING MOBILE');
+					}else{
+							 setTimeout(function(){
+											 $(".fixTable").tableHeadFixer({
+											 head: true,
+											 foot: false,
+											 left: 6,
+											 right: 0,
+											 'z-index': 0
+									 });},500);
+					}
 				}else{
-					
+
 					rpc.reportList=[];
 						// toastr.error(result.message, 'Sorry!');
 				}
 
-				setTimeout(function(){
-		            $(".fixTable").tableHeadFixer({
-		            head: true,
-		            foot: false,
-		            left: 6,
-		            right: 0,
-		            'z-index': 0
-		        });},500);
+
+
+
 
 				//setTimeout(function(){
 					//rpc.getReportList();
@@ -184,6 +180,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 
 		rpc.getReportList=function(){
 			rpc.fetchList(-1);
+
 		}
 		rpc.getReportList();
 
@@ -213,6 +210,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 		}
 
 		rpc.getProductList=function(){
+
 			var req={
 				id:0
 			}
@@ -222,13 +220,14 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 			var promise = services.getProductList(req);
 			promise.success(function (result) {
 				if(result.status_code == 200){
-					Utility.stopAnimation();
+
 						rpc.productList = result.data.product_ids;
 
 				}else{
-					Utility.stopAnimation();
+
 						toastr.error(result.message, 'Sorry!');
 				}
+					Utility.stopAnimation();
 
 			});
 		}

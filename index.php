@@ -86,6 +86,13 @@
                 outline:0;
                 text-decoration: none;
             }
+
+          @media screen and (max-width: 768px) {
+             #viewPort>.content{
+               margin-top: 19%;
+             }
+          }
+
         </style>
     </head>
 
@@ -100,11 +107,11 @@
                 <!-- style="display:none;" -->
                 <header class="main-header">
                     <!-- Logo -->
-                    <a href="/" class="logo">
+                    <a href="/" class="logo" style="    text-align: -webkit-center;">
                       <!-- mini logo for sidebar mini 50x50 pixels -->
                       <img src="/resources/img/Syslogyx_logo_samll.png" style="    padding-left: 7px; padding-top: 7px;" class="logo-mini">
                       <!-- logo for regular state and mobile devices -->
-                      <img src="/resources/img/syslogyx_logo.png" style="padding-left: 46px;" class="logo-lg">
+                      <img src="/resources/img/syslogyx_logo.png"  class="logo-lg">
                     </a>
                     <!-- Header Navbar: style can be found in header.less -->
                     <nav class="navbar navbar-static-top" >
@@ -360,10 +367,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-        
+
         <script src="/resources/plugins/tableHeadFixer/tableHeadFixer.js"></script>
 
-        
+
 
         <script src="/resources/js/myapp.js"></script>
         <script type="text/javascript">
