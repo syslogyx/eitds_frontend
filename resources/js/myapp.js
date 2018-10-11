@@ -174,7 +174,7 @@ app.service('pagination', function (RESOURCES, $http, $cookieStore, $filter) {
     };
 
     //apply pagination
-    this.applyPagination = function (pageData, ctrlscope, $source= null) {
+    this.applyPagination = function (pageData, ctrlscope, $source=null) {
         console.log(pageData);
         $('#pagination-sec').twbsPagination({
             totalPages: pageData.lastPage,
@@ -192,6 +192,7 @@ app.service('pagination', function (RESOURCES, $http, $cookieStore, $filter) {
                 if($source != null){
 
                 }else{
+
                     ctrlscope.fetchList(page,$source);
                 }
 

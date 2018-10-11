@@ -30,7 +30,7 @@
                 min-height: 34px;
             }
 
-            .formheading {              
+            .formheading {
               margin-left: 0px;
             }
 
@@ -171,11 +171,12 @@
                             <div class="col-md-12" >
                                 <div class="col-md-6">
                                     <div class="pull-center">
-                                        <h4>Product Id : {{product_data.project_id}}</h4>
+                                        <h5 style="display: inline-flex;">Temp Product Id : {{product_data.project_id}} <div ng-if="product_data.finalId"> [<span style='color:#5cb85c'>OK</span>]</div> <div ng-if="!product_data.finalId">[<span style='color:red'>NOT OK</span>]</div>   </h5>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="pull-right">
+                                      <h5 ng-if="product_data.finalId">Final Product Id : {{product_data.finalId}}</h5>
                                         <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF',product_data.project_id);" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                         <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table',$index, product_data.project_id);" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                         </button>

@@ -82,7 +82,8 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 							arr["test_case_length"] = test_case_length;
 						  	$.each( value, function( key1, value1 ) {
 						  		value1["Mode_data"] = [];
-									if(key1!='username'){
+										arr["finalId"] = key1=='finalId'?value1:'';
+									if(key1!='username' && key1!='finalId'){
 								  		$.each( value1, function( key2, value2 ) {
 								  			if(key2 == "Mode"){
 								  				var mode_length = Object.keys(value2).length;
@@ -142,6 +143,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 						rpc.data.push(arr);
 
 					}
+					
 					if( navigator.userAgent.match(/Android/i)
 						 || navigator.userAgent.match(/webOS/i)
 						 || navigator.userAgent.match(/iPhone/i)
