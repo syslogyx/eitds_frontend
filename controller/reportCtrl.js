@@ -166,11 +166,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 					rpc.reportList=[];
 						// toastr.error(result.message, 'Sorry!');
 				}
-
-
-
-
-
+				Utility.stopAnimation();
 				//setTimeout(function(){
 					//rpc.getReportList();
 				//},5000);
@@ -210,7 +206,7 @@ app.controller('reportCtrl', function ($scope,menuService,services,$cookieStore,
 		}
 
 		rpc.getProductList=function(){
-
+			Utility.startAnimation();
 			var req={
 				id:0
 			}
