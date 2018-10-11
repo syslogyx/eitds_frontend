@@ -4,20 +4,23 @@
             float: left;
             margin: 2px;
         }
-        
+        .formheading {
+            margin-left: 0px;
+          }
+
     </style>
     <div class="container-fluid">
         <br>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-xs-6 col-sm-6">
                 <h4>Sticker</h4>
             </div>
-            <div class="col-md-6 pull-right" style="margin-top:1%;">
-                
+            <div class="col-md-6 col-xs-6 col-sm-6 pull-right" style="margin-top:1%;">
+
             </div>
         </div>
         <br>
-        
+
         <div class="row" id="filterBox">
             <div class="col-md-12">
                 <div class="box box-primary paddingLeft0">
@@ -100,17 +103,17 @@
         </div>
 
         <div class="box-header with-border" style="background: white;">
-                <div class="formHeadDiv">
+                <div class="">
                     <div class="row">
-                        <div class="col-md-12">
-                        <div class="col-md-6">
+                        <div class="">
+                        <div class="col-md-6 col-xs-6 col-sm-6">
                             <h1 class="formheading">
-                                  Sticker List 
+                                  Sticker List
                             </h1>
                         </div>
 
                         <div class="col-md-6">
-                            <div class="pull-right" ng-if="sti.stickerList.length > 0"> 
+                            <div class="pull-right" ng-if="sti.stickerList.length > 0">
                                 <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="sti.download();" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                 <!-- <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table');" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                 </button>

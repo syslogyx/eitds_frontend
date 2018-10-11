@@ -11,12 +11,12 @@ app.controller('generateStickerCtrl', function ($scope,menuService,services,$coo
 			if($("#deviceForm").valid()){
 				var promise = services.generateSticker({product_id:ges.productId});
 				promise.success(function (result) {
-					debugger;
+				
 					if(result.status_code == 200){
 						Utility.stopAnimation();
 							ges.finalId = result.data[0].finalId;
 							ges.seriesName = result.data[0].seriesName;
-							
+
 					}else{
 						Utility.stopAnimation();
 							ges.finalId = '';
@@ -25,7 +25,7 @@ app.controller('generateStickerCtrl', function ($scope,menuService,services,$coo
 					}
 				});
 			}
-			
+
 		}
 
 		ges.clearForm=function(){

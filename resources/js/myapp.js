@@ -338,7 +338,7 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
     this.updateUser = function (request) {
         Utility.startAnimation();
         return $http({
-            method: 'PUT',
+            method: 'POST',
             url: RESOURCES.SERVER_API + "update/user",
             dataType: 'json',
             data: $.param(request),
@@ -350,7 +350,7 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
     this.updateDevice = function (request) {
         Utility.startAnimation();
         return $http({
-            method: 'PUT',
+            method: 'POST',
             url: RESOURCES.SERVER_API + "update/device",
             dataType: 'json',
             data: $.param(request),
@@ -581,8 +581,13 @@ app.config(function ($routeProvider, $locationProvider) {
                 resolve: {
                     'acl': ['$q', 'AclService', '$cookieStore', '$location', function ($q, AclService, $cookieStore, $location) {
                             var authKey = $cookieStore.get('identity');
-                            if (authKey !== undefined) {
-                                $location.path('/report/report_list');
+                            if (authKey !== undefined ) {
+                                authKey=JSON.parse(authKey);
+                                if(authKey.identity.role==3){
+                                  $location.path('/generate/sticker');
+                                }else{
+                                  $location.path('/report/report_list');
+                                }
                                 return true;
                             }
                         }]
@@ -693,7 +698,9 @@ app.run(function ($rootScope, AclService, $cookieStore, $location, services) {
 
         services.setIdentity(authIdentity);
         // Attach the member role to the current user
+
         AclService.attachRole(role);
+
     }
 
     // If the route change failed due to our "Unauthorized" error, redirect them
