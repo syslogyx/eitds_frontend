@@ -177,8 +177,8 @@
                                 <div class="col-md-6">
                                     <div class="pull-right">
                                       <h5 ng-if="product_data.finalId">Final Product Id : {{product_data.finalId}}</h5>
-                                        <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF',product_data.project_id);" style="outline: 0;" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
-                                        <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table',$index, product_data.project_id);" style="outline: 0;" > <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
+                                        <button type="button" class="btn btn-default btn-md"  title="Find" ng-click="rpc.download('PDF',product_data.project_id);" style="outline: 0;" ng-if="product_data.finalId" > <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
+                                        <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="exportToExcel('#hidden_table',$index, product_data.project_id);" style="outline: 0;" ng-if="product_data.finalId"> <i class="fa fa-file-excel-o" style="color: green;"></i> Excel
                                         </button>
 
                                     </div>

@@ -8,8 +8,6 @@
             <div class="col-md-6 col-xs-6 col-sm-6 pull-right" style="margin-top:1%;">
                 <button type="button" class="btn btn-primary btn-circle btn-sm pull-right" data-toggle="modal" title="Add new Device" data-toggle="Modal" data-ng-click="resetForm(); openAddDeviceModal()"><i class="fa fa-plus" aria-hidden="true" style="padding-right:0.3px"></i>
                 </button>
-
-
             </div>
         </div>
         <br>
@@ -33,7 +31,7 @@
                                 <td style="text-align: center;" ng-bind="($index + 1)"></td>
 
                                 <td>{{data.device_id}}</td>
-                                <td>{{data.status}}</td>
+                                <td>{{data.status == 'ENGAGE' ? 'ENGAGED' : 'NOT ENGAGED'}}</td>
                                   <td>{{data.username}}</td>
                                 <td style="text-align: left;">
                                     <button class="btn btn-primary btn-xs" title="Edit" ng-click="dmc.getDeviceData(data.id);"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
