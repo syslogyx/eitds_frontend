@@ -38,7 +38,7 @@ app.controller('stickerCtrl', function ($scope,menuService,services,$cookieStore
             Utility.stopAnimation();
             if(result.status_code == 200){
                 sti.stickerList = result.data;
-								
+
             }else{
                 sti.stickerList=[];
                 toastr.error(result.message, 'Sorry!');
@@ -48,6 +48,21 @@ app.controller('stickerCtrl', function ($scope,menuService,services,$cookieStore
         }
 
     }
+
+		sti.pdf = function(){
+				if($("#filterSeriesForm").valid()){
+
+				request = {
+						"seriesName": sti.series_month_year,
+						"limit":sti.records,
+						"startIndex":sti.from_start
+				}
+
+  			services.pdf( sti.series_month_year,sti.records,sti.from_start);
+
+				}
+
+		}
 
     sti.download = function(){
         if($("#filterSeriesForm").valid()){

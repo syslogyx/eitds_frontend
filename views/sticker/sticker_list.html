@@ -90,8 +90,8 @@
                     <div class="box-footer" style="margin-right:14px!important;border-top: 1px solid lightgrey!important;">
                         <div class="row">
                             <div class="pull-right">
-                                <div class="col-md-6">
-
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-default btn-md" title="PDF" ng-click="sti.pdf();" style="outline: 0;margin-top: 10px;"> <i class="fa fa-file-pdf-o" style="color: red;"></i> PDF</button>
                                     <button  type="button" class="btn btn-default btn-md"  title="Find" ng-click="sti.findWithFilter();" style="margin-top: 10px;outline: 0;" ><i class="fa fa-search" aria-hidden="true"></i> &nbsp; Find
                                     </button>
                                 </div>
@@ -185,6 +185,9 @@
                     required:true
                 },
                 series_month_year : {
+                    required:true
+                },
+                records : {
                     required:true
                 }
             },

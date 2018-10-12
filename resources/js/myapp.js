@@ -433,7 +433,11 @@ app.service('services', function (RESOURCES, $http, $cookieStore, $filter) {
         // win.setTimeout(function(){this.close();},1500)
         // win.focus();
     };
-
+    this.pdf = function (series_month_year,records,from_start) {
+        // var win =
+      	window.open(RESOURCES.SERVER_API +'sticker/pdf/download/'+series_month_year+'/'+records+'/'+from_start);
+        // win.focus();
+    };
     this.getProductList = function (req) {
         Utility.startAnimation();
         return $http({
