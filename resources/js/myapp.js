@@ -588,11 +588,7 @@ app.config(function ($routeProvider, $locationProvider) {
                             var authKey = $cookieStore.get('identity');
                             if (authKey !== undefined ) {
                                 authKey=JSON.parse(authKey);
-                                if(authKey.identity.role==3){
-                                  $location.path('/generate/sticker');
-                                }else{
-                                  $location.path('/report/report_list');
-                                }
+                                $location.path('/');
                                 return true;
                             }
                         }]
