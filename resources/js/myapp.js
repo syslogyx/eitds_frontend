@@ -1,7 +1,9 @@
 var Utility = {
 
-    apiBaseUrl: "http://172.16.1.36:8000/api/",
-    imgBaseUrl: "http://172.16.1.36:8000/img/",
+    // apiBaseUrl: "http://172.16.1.36:8000/api/",
+    // imgBaseUrl: "http://172.16.1.36:8000/img/",
+    imgBaseUrl: "http://172.16.1.92:9000/img/",
+    apiBaseUrl : "http://172.16.1.92:9000/api/",
 
     // apiBaseUrl: "http://eitdsapi.syslogyx.com/api/",
     // imgBaseUrl: "http://eitdsapi.syslogyx.com/img/",

@@ -30,6 +30,7 @@ app.controller('deviceManagmentCtrl', function ($scope,menuService,services,$coo
             if(result.status_code == 200){
                 dmc.id = result.data.id;
                 dmc.deviceName = result.data.device_id;
+                dmc.tempDeviceName = result.data.device_id;
                 dmc.title = "Update Device";
                 $("#addDeviceModal").modal("toggle");
             }else{
@@ -47,6 +48,13 @@ app.controller('deviceManagmentCtrl', function ($scope,menuService,services,$coo
             if (dmc.id) {
                 req.id = dmc.id;
                 var operationMessage = " updated ";
+
+                if(dmc.deviceName == dmc.tempDeviceName){
+                    $("#addDeviceModal").modal("toggle");
+                    dmc.init();
+                    toastr.success('Device' + operationMessage +  'successfully..');
+                    return false;
+                }
                 var promise = services.updateDevice(req);
 
             } else {
@@ -61,6 +69,9 @@ app.controller('deviceManagmentCtrl', function ($scope,menuService,services,$coo
                     dmc.init();
                     toastr.success('Device' + operationMessage +  'successfully..');
                 }else{
+                    if(result.data.hasOwnProperty('error')){
+                        result.data.message=result.data.error.device_id[0];
+                    }
                     toastr.error(result.data.message, 'Sorry!');
                 }
                 // $location.url('/Device/Device_list', false);
@@ -81,6 +92,7 @@ app.controller('deviceManagmentCtrl', function ($scope,menuService,services,$coo
         });
         dmc.id = null;
         dmc.deviceName = '';
+        dmc.tempDeviceName='';
     };
 
     $scope.openAddDeviceModal=function(){
